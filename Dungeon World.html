@@ -14,6 +14,14 @@
 <input type="hidden" name="attr_equipment_totalarmor" value="0">
 <input type="hidden" name="attr_bond_query" value="(0)[Other Bond]">
 
+<!-- Auto-calculated rollable attribute values -->
+<input type="hidden" name="attr_str_rollable" value="0">
+<input type="hidden" name="attr_dex_rollable" value="0">
+<input type="hidden" name="attr_con_rollable" value="0">
+<input type="hidden" name="attr_int_rollable" value="0">
+<input type="hidden" name="attr_wis_rollable" value="0">
+<input type="hidden" name="attr_cha_rollable" value="0">
+
 <!-- 
 <input type="hidden" name="attr_level0_name" value="@{rotename}">
 <input type="hidden" name="attr_rotename" value="Rote" data-i18n="rote">
@@ -157,191 +165,250 @@
 
 <div class="page main-page">
 
-<div class="mid-container">
-	<div class="mid-module look-container">
-		<div class="mid-header">
-			<button type="roll" name="roll_showlook" value="&{template:dwgeneral} {{charname=@{character_name}}} {{infoname=^{look}}} {{details=@{char_look}}}">
-			<span class="label" data-i18n="look-u">LOOK</span>
+<!-- ROLLABLE ATTRIBUTES SECTION AT TOP -->
+<div class="rollable-attributes-container">
+	<div class="attributes-header">
+		<span class="label">ROLLABLE ATTRIBUTES</span>
+		<p class="help-text">Modified by condition penalties - each severity level = -1 penalty</p>
+	</div>
+	<div class="attributes-grid">
+		<div class="attribute-item">
+			<button type="roll" name="roll_str_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=STR (Modified)}} {{result=[[@{rolltype} + @{strength_mod} - @{wounded_severity} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+				<span class="attr-label">STR</span>
+				<span class="attr-value">@{str_rollable}</span>
 			</button>
 		</div>
-		<div class="mid-content look">
-			<textarea name="attr_char_look"></textarea>
+		<div class="attribute-item">
+			<button type="roll" name="roll_dex_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=DEX (Modified)}} {{result=[[@{rolltype} + @{dexterity_mod} - @{hobbled_severity} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+				<span class="attr-label">DEX</span>
+				<span class="attr-value">@{dex_rollable}</span>
+			</button>
+		</div>
+		<div class="attribute-item">
+			<button type="roll" name="roll_con_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=CON (Modified)}} {{result=[[@{rolltype} + @{constitution_mod} - @{exhausted_severity} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+				<span class="attr-label">CON</span>
+				<span class="attr-value">@{con_rollable}</span>
+			</button>
+		</div>
+		<div class="attribute-item">
+			<button type="roll" name="roll_int_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=INT (Modified)}} {{result=[[@{rolltype} + @{intelligence_mod} - @{panicked_severity} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+				<span class="attr-label">INT</span>
+				<span class="attr-value">@{int_rollable}</span>
+			</button>
+		</div>
+		<div class="attribute-item">
+			<button type="roll" name="roll_wis_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=WIS (Modified)}} {{result=[[@{rolltype} + @{wisdom_mod} - @{agitated_severity} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+				<span class="attr-label">WIS</span>
+				<span class="attr-value">@{wis_rollable}</span>
+			</button>
+		</div>
+		<div class="attribute-item">
+			<button type="roll" name="roll_cha_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=CHA (Modified)}} {{result=[[@{rolltype} + @{charisma_mod} - @{shamed_severity} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+				<span class="attr-label">CHA</span>
+				<span class="attr-value">@{cha_rollable}</span>
+			</button>
 		</div>
 	</div>
-	<div class="mid-module vitals-container">
-		<div class="vital mid-header armor-container">
-			<button type="roll" name="roll_showarmor" value="&{template:dwgeneral} {{charname=@{character_name}}} {{infoname=^{armor}}} {{details=[[@{armor}]]}}">
-			<span class="label" data-i18n="armor-u">ARMOR</span>
+	<div class="utility-rolls">
+		<div class="skill-item">
+			<button type="roll" name="roll_defy_danger" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Defy Danger}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+				Defy Danger
 			</button>
-			<input type="number" name="attr_armor" value="@{equipment_armor}+@{equipment_armormod}+@{global_arm}" disabled="true">
 		</div>
-		<div class="vital mid-header hp-container">
-			<button type="roll" name="roll_showhp" value="&{template:dwgeneral} {{charname=@{character_name}}} {{infoname=^{hitpoints}}} {{details=[[@{HP}]]&#47;[[@{HP|max}]]}}">
-			<span class="label" data-i18n="hitpoints-u">HIT POINTS</span>
+		<div class="skill-item">
+			<button type="roll" name="roll_resistance" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Resistance}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+				Resistance
 			</button>
-			<span class="heart"></span>
-			<input type="number" min="0" class="hitpoints" name="attr_HP" value="0">
-			<input type="number" min="0" class="max-hitpoints" name="attr_HP_max" value="0">
 		</div>
-		<div class="vital mid-header damage-container">
-			<button type="roll" name="roll_damage" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=^{classdamage}}} {{result=[[@{damagedie} + @{equipment_dmg} + @{global_dmg}]]}}">
-			<span class="label" data-i18n="damage-u">DAMAGE</span>
-			</button>
-			<select name="attr_damagedie">
-				<option value="d4" selected="selected">d4</option>
-				<option value="d6">d6</option>
-				<option value="d8">d8</option>
-				<option value="d10">d10</option>
-				<option value="d12">d12</option>
-				<option value="d20">d20</option>
-			</select>
+		<div class="skill-item">
+			<label>Advantage/Disadvantage:</label>
+			<div class="advantage-buttons">
+				<input type="radio" name="attr_advantage_state" value="advantage"> Advantage
+				<input type="radio" name="attr_advantage_state" value="normal" checked="checked"> Normal
+				<input type="radio" name="attr_advantage_state" value="disadvantage"> Disadvantage
+			</div>
 		</div>
 	</div>
-	<div class="mid-module alignment-container">
-		<div class="mid-header">
-			<span class="label" data-i18n="alignment-u">ALIGNMENT</span>
-		</div>
-		<div class="mid-content alignment">
-			<input type="text" name="attr_alignment">
-			<textarea name="attr_alignment_details"></textarea>
-		</div>
-
-	</div>
-
 </div>
-<div class="sheet-mid-container">
-	<div class="stats-container">
-		<div class="dw stats">
-			<div class="dw-statbox">
-				<div class="dw-stat-header">
-					<span class="dw-statname-long" data-i18n="strength">Strength</span>
-					<input type="number" name="attr_strength" value="10">
-				</div>
-				<div class="dw-stat-debility">
-						<label><span class="dw-debility-name" data-i18n="weak-1">Weak -1</span>
-						<input type="checkbox" name="attr_debil_weak" value="1"></label>
-					</div>
-				<div class="dw-stat-footer">
-					<div class="dw-stat-circle">
-					<button type="roll" name="roll_strength" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Strength}} {{result=[[@{rolltype} + @{strength_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
-						<br />
-						<span class="dw-statname-short" data-i18n="str-u">STR</span>
-						<br />
-						<input type="hidden" name="attr_calc_strength_mod" value="0" />
-						<input type="number" class="dw-statbonus" name="attr_strength_mod" value="@{calc_strength_mod}" disabled="true">
-					</button>
-					</div>
-				</div>
-			</div>
-			<div class="dw-statbox">
-				<div class="dw-stat-header">
-					<span class="dw-statname-long" data-i18n="dexterity">Dexterity</span>
-					<input type="number" name="attr_dexterity" value="10">
-				</div>
-				<div class="dw-stat-debility">
-						<label><span class="dw-debility-name" data-i18n="shaky-1">Shaky -1</span>
-						<input type="checkbox" name="attr_debil_shaky" value="1"></label>
-					</div>
-				<div class="dw-stat-footer">
-					<div class="dw-stat-circle">
-					<button type="roll" name="roll_dexterity" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Dexterity}} {{result=[[@{rolltype} + @{dexterity_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
-						<br />
-						<span class="dw-statname-short" data-i18n="dex-u">DEX</span>
-						<br />
-						<input type="hidden" name="attr_calc_dexterity_mod" value="0" />
-						<input type="number" class="dw-statbonus" name="attr_dexterity_mod" value="@{calc_dexterity_mod}" disabled="true">
-					</button>
-					</div>
-				</div>
-			</div>
-			<div class="dw-statbox">
-				<div class="dw-stat-header">
-					<span class="dw-statname-long" data-i18n="constitution">Constitution</span>
-					<input type="number" name="attr_constitution" value="10">
-				</div>
-				<div class="dw-stat-debility">
-						<label><span class="dw-debility-name" data-i18n="sick-1">Sick -1</span>
-						<input type="checkbox" name="attr_debil_sick" value="1"></label>
-					</div>
-				<div class="dw-stat-footer">
-					<div class="dw-stat-circle">
-					<button type="roll" name="roll_constitution" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Constitution}} {{result=[[@{rolltype} + @{constitution_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
-						<br />
-						<span class="dw-statname-short" data-i18n="con-u">CON</span>
-						<br />
-						<input type="hidden" name="attr_calc_constitution_mod" value="0" />
-						<input type="number" class="dw-statbonus" name="attr_constitution_mod" value="@{calc_constitution_mod}" disabled="true">
-					</button>
-					</div>
-				</div>
-			</div>
-			<div class="dw-statbox">
-				<div class="dw-stat-header">
-					<span class="dw-statname-long" data-i18n="intelligence">Intelligence</span>
-					<input type="number" name="attr_intelligence" value="10">
-				</div>
-				<div class="dw-stat-debility">
-						<label><span class="dw-debility-name" data-i18n="stunned-1">Stunned -1</span>
-						<input type="checkbox" name="attr_debil_stunned" value="1"></label>
-					</div>
-				<div class="dw-stat-footer">
-					<div class="dw-stat-circle">
-					<button type="roll" name="roll_intelligence" value="&{template:dwgeneral} {{charname=@{character_name}}}{{rollname=Intelligence}} {{result=[[@{rolltype} + @{intelligence_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
-						<br />
-						<span class="dw-statname-short" data-i18n="int-u">INT</span>
-						<br />
-						<input type="hidden" name="attr_calc_intelligence_mod" value="0" />
-						<input type="number" class="dw-statbonus" name="attr_intelligence_mod" value="@{calc_intelligence_mod}" disabled="true">
-					</button>
-					</div>
-				</div>
-			</div>
-			<div class="dw-statbox">
-				<div class="dw-stat-header">
-					<span class="dw-statname-long" data-i18n="wisdom">Wisdom</span>
-					<input type="number" name="attr_wisdom" value="10">
-				</div>
-				<div class="dw-stat-debility">
-						<label><span class="dw-debility-name" data-i18n="confused-1">Confused -1</span>
-						<input type="checkbox" name="attr_debil_confused" value="1"></label>
-					</div>
-				<div class="dw-stat-footer">
-					<div class="dw-stat-circle">
-					<button type="roll" name="roll_wisdom" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Wisdom}} {{result=[[@{rolltype} + @{wisdom_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
-						<br />
-						<span class="dw-statname-short" data-i18n="wis-u">WIS</span>
-						<br />
-						<input type="hidden" name="attr_calc_wisdom_mod" value="0" />
-						<input type="number" class="dw-statbonus" name="attr_wisdom_mod" value="@{calc_wisdom_mod}" disabled="true">
-					</button>
-					</div>
-				</div>
-			</div>
-			<div class="dw-statbox">
-				<div class="dw-stat-header">
-					<span class="dw-statname-long" data-i18n="charisma">Charisma</span>
-					<input type="number" name="attr_charisma" value="10">
-				</div>
-				<div class="dw-stat-debility">
-						<label><span class="dw-debility-name" data-i18n="scarred-1">Scarred -1</span>
-						<input type="checkbox" name="attr_debil_scarred" value="1"></label>
-					</div>
-				<div class="dw-stat-footer">
-					<div class="dw-stat-circle">
-					<button type="roll" name="roll_charisma" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Charisma}} {{result=[[@{rolltype} + @{charisma_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
-						<br />
-						<span class="dw-statname-short" data-i18n="cha-u">CHA</span>
-						<br />
-						<input type="hidden" name="attr_calc_charisma_mod" value="0" />
-						<input type="number" class="dw-statbonus" name="attr_charisma_mod" value="@{calc_charisma_mod}" disabled="true">
-					</button>
-					</div>
-				</div>
-			</div>
 
+<!-- CONDITIONS AND DAMAGE TRACKING -->
+<div class="conditions-container">
+	<div class="conditions-header">
+		<span class="label">CONDITIONS & DAMAGE TRACKING</span>
+		<div class="death-tracker">
+			<span class="label">BLACK GATE:</span>
+			<div class="death-symbols">
+				<span class="death-count" title="Death Markers">SKULLS: <input type="number" name="attr_death_count" value="0"></span>
+			</div>
 		</div>
 	</div>
+	<div class="conditions-grid">
+		<div class="condition-category physical">
+			<div class="condition-header">PHYSICAL CONDITIONS</div>
+			<div class="condition-row">
+				<label class="condition-name">Wounded (STR):</label>
+				<select name="attr_wounded_severity">
+					<option value="0">None</option>
+					<option value="1">Minor (-1)</option>
+					<option value="2">Moderate (-2)</option>
+					<option value="3">Severe (-3)</option>
+					<option value="4">Terminal (-4)</option>
+				</select>
+				<div class="damage-state">
+					<input type="radio" name="attr_wounded_state" value="none" checked="checked"> None
+					<input type="radio" name="attr_wounded_state" value="hit"> [X] Hit
+					<input type="radio" name="attr_wounded_state" value="healing"> [/] Healing
+				</div>
+			</div>
+			<div class="condition-row">
+				<label class="condition-name">Hobbled (DEX):</label>
+				<select name="attr_hobbled_severity">
+					<option value="0">None</option>
+					<option value="1">Minor (-1)</option>
+					<option value="2">Moderate (-2)</option>
+					<option value="3">Severe (-3)</option>
+					<option value="4">Terminal (-4)</option>
+				</select>
+				<div class="damage-state">
+					<input type="radio" name="attr_hobbled_state" value="none" checked="checked"> None
+					<input type="radio" name="attr_hobbled_state" value="hit"> [X] Hit
+					<input type="radio" name="attr_hobbled_state" value="healing"> [/] Healing
+				</div>
+			</div>
+			<div class="condition-row">
+				<label class="condition-name">Exhausted (CON):</label>
+				<select name="attr_exhausted_severity">
+					<option value="0">None</option>
+					<option value="1">Minor (-1)</option>
+					<option value="2">Moderate (-2)</option>
+					<option value="3">Severe (-3)</option>
+					<option value="4">Terminal (-4)</option>
+				</select>
+				<div class="damage-state">
+					<input type="radio" name="attr_exhausted_state" value="none" checked="checked"> None
+					<input type="radio" name="attr_exhausted_state" value="hit"> [X] Hit
+					<input type="radio" name="attr_exhausted_state" value="healing"> [/] Healing
+				</div>
+			</div>
+		</div>
+		<div class="condition-category mental">
+			<div class="condition-header">MENTAL CONDITIONS</div>
+			<div class="condition-row">
+				<label class="condition-name">Panicked (INT):</label>
+				<select name="attr_panicked_severity">
+					<option value="0">None</option>
+					<option value="1">Minor (-1)</option>
+					<option value="2">Moderate (-2)</option>
+					<option value="3">Severe (-3)</option>
+					<option value="4">Terminal (-4)</option>
+				</select>
+				<div class="damage-state">
+					<input type="radio" name="attr_panicked_state" value="none" checked="checked"> None
+					<input type="radio" name="attr_panicked_state" value="hit"> [X] Hit
+					<input type="radio" name="attr_panicked_state" value="healing"> [/] Healing
+				</div>
+			</div>
+			<div class="condition-row">
+				<label class="condition-name">Agitated (WIS):</label>
+				<select name="attr_agitated_severity">
+					<option value="0">None</option>
+					<option value="1">Minor (-1)</option>
+					<option value="2">Moderate (-2)</option>
+					<option value="3">Severe (-3)</option>
+					<option value="4">Terminal (-4)</option>
+				</select>
+				<div class="damage-state">
+					<input type="radio" name="attr_agitated_state" value="none" checked="checked"> None
+					<input type="radio" name="attr_agitated_state" value="hit"> [X] Hit
+					<input type="radio" name="attr_agitated_state" value="healing"> [/] Healing
+				</div>
+			</div>
+			<div class="condition-row">
+				<label class="condition-name">Shamed (CHA):</label>
+				<select name="attr_shamed_severity">
+					<option value="0">None</option>
+					<option value="1">Minor (-1)</option>
+					<option value="2">Moderate (-2)</option>
+					<option value="3">Severe (-3)</option>
+					<option value="4">Terminal (-4)</option>
+				</select>
+				<div class="damage-state">
+					<input type="radio" name="attr_shamed_state" value="none" checked="checked"> None
+					<input type="radio" name="attr_shamed_state" value="hit"> [X] Hit
+					<input type="radio" name="attr_shamed_state" value="healing"> [/] Healing
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="resistance-section">
+		<div class="resistance-stats">
+			<div class="resistance-item">
+				<label>RES to Spend (Max):</label>
+				<input type="number" name="attr_resistance_max" value="0">
+			</div>
+			<div class="resistance-item">
+				<label>Current RES:</label>
+				<input type="number" name="attr_resistance_current" value="0">
+			</div>
+			<div class="resistance-item">
+				<label>Resistance Modifier:</label>
+				<input type="number" name="attr_resistance_mod" value="0" disabled="true">
+			</div>
+		</div>
+	</div>
+</div>
 
+<!-- ARMOR AND WEAPONS SECTION -->
+<div class="equipment-combat-container">
+	<div class="armor-section">
+		<div class="armor-header">
+			<span class="label">ARMOR</span>
+		</div>
+		<div class="armor-content">
+			<div class="armor-item">
+				<label>Physical Armor:</label>
+				<input type="number" name="attr_physical_armor" value="0">
+			</div>
+			<div class="armor-item">
+				<label>Magical Resistance:</label>
+				<input type="number" name="attr_magical_resistance" value="0">
+			</div>
+			<div class="armor-item">
+				<label>Armor Notes:</label>
+				<textarea name="attr_armor_notes" rows="2" placeholder="Describe armor properties..."></textarea>
+			</div>
+		</div>
+	</div>
+	
+	<div class="weapons-section">
+		<div class="weapons-header">
+			<span class="label">WEAPONS</span>
+		</div>
+		<fieldset class="repeating_weapons">
+			<div class="weapon-row">
+				<input type="text" name="attr_weapon_name" placeholder="Weapon Name">
+				<select name="attr_weapon_condition_type">
+					<option value="slashing">Slashing</option>
+					<option value="piercing">Piercing</option>
+					<option value="smashing">Smashing</option>
+					<option value="magical">Magical</option>
+				</select>
+				<select name="attr_weapon_severity">
+					<option value="1">Minor</option>
+					<option value="2">Moderate</option>
+					<option value="3">Severe</option>
+					<option value="4">Terminal</option>
+				</select>
+				<input type="text" name="attr_weapon_notes" placeholder="Weapon properties...">
+				<button type="roll" name="roll_weapon_attack" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=@{weapon_name} Attack}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+					Attack
+				</button>
+			</div>
+		</fieldset>
+	</div>
+</div>
+
+<div class="sheet-mid-container">
 	<div class="misc-container">
 		<div class="mid-header">
 			<span class="label" data-i18n="bonds-u">BONDS</span>
@@ -422,6 +489,236 @@
 				<input type="hidden" name="attr_calc_dmg" value="0" />
 				<input type="hidden" name="attr_calc_arm" value="0" />
 			</fieldset>
+		</div>
+	</div>
+</div>
+
+<div class="mid-container weapons-shields-container">
+	<div class="mid-module weapons-container">
+		<div class="mid-header">
+			<span class="label" data-i18n="weapons">WEAPONS</span>
+		</div>
+		<div class="mid-content weapons">
+			<fieldset class="repeating_weapons">
+				<div class="weapon-main">
+					<input type="text" name="attr_weapon_name" placeholder="Weapon Name" />
+					<!-- range -->
+					<select name="attr_weapon_range">
+						<!-- close, medium, far, reach, thrown, artillery -->
+						<option value="close" selected="selected">Close</option>
+						<option value="medium">Medium</option>
+						<option value="far">Far</option>
+						<option value="reach">Reach</option>
+						<option value="thrown">Thrown</option>
+						<option value="artillery">Artillery</option>
+					</select>
+					<!-- AP Select: N/A , Smashing, Piercing, Magical -->
+					<select name="attr_weapon_ap">
+						<option value="none" selected="selected">N/A</option>
+						<option value="smashing">Smashing</option>
+						<option value="piercing">Piercing</option>
+						<option value="magical">Magical</option>
+					</select>
+					<!-- tags -->
+					<input type="text" name="attr_weapon_tags" placeholder="Tags (e.g. Forceful, Messy, etc.)" />
+					
+				</div>
+			</fieldset>
+		</div>
+	</div>
+</div>
+
+<div class="mid-container look-alignment-container">
+	<div class="mid-module look-container">
+		<div class="mid-header">
+			<button type="roll" name="roll_showlook" value="&{template:dwgeneral} {{charname=@{character_name}}} {{infoname=^{look}}} {{details=@{char_look}}}">
+			<span class="label" data-i18n="look-u">LOOK</span>
+			</button>
+		</div>
+		<div class="mid-content look">
+			<textarea name="attr_char_look"></textarea>
+		</div>
+	</div>
+	<!-- <div class="mid-module vitals-container">
+		<div class="vital mid-header armor-container">
+			<button type="roll" name="roll_showarmor" value="&{template:dwgeneral} {{charname=@{character_name}}} {{infoname=^{armor}}} {{details=[[@{armor}]]}}">
+			<span class="label" data-i18n="armor-u">ARMOR</span>
+			</button>
+			<input type="number" name="attr_armor" value="@{equipment_armor}+@{equipment_armormod}+@{global_arm}" disabled="true">
+		</div>
+		<div class="vital mid-header hp-container">
+			<button type="roll" name="roll_showhp" value="&{template:dwgeneral} {{charname=@{character_name}}} {{infoname=^{hitpoints}}} {{details=[[@{HP}]]&#47;[[@{HP|max}]]}}">
+			<span class="label" data-i18n="hitpoints-u">HIT POINTS</span>
+			</button>
+			<span class="heart"></span>
+			<input type="number" min="0" class="hitpoints" name="attr_HP" value="0">
+			<input type="number" min="0" class="max-hitpoints" name="attr_HP_max" value="0">
+		</div>
+		<div class="vital mid-header damage-container">
+			<button type="roll" name="roll_damage" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=^{classdamage}}} {{result=[[@{damagedie} + @{equipment_dmg} + @{global_dmg}]]}}">
+			<span class="label" data-i18n="damage-u">DAMAGE</span>
+			</button>
+			<select name="attr_damagedie">
+				<option value="d4" selected="selected">d4</option>
+				<option value="d8">d8</option>
+				<option value="d10">d10</option>
+				<option value="d12">d12</option>
+				<option value="d20">d20</option>
+			</select>
+		</div>
+	</div> -->
+	<div class="mid-module alignment-container">
+		<div class="mid-header">
+			<span class="label" data-i18n="alignment-u">ALIGNMENT</span>
+		</div>
+		<div class="mid-content alignment">
+			<input type="text" name="attr_alignment">
+			<textarea name="attr_alignment_details"></textarea>
+		</div>
+
+	</div>
+
+</div>
+
+<!-- ATTRIBUTES SECTION AT BOTTOM -->
+<div class="attributes-bottom-container">
+	<div class="attributes-header">
+		<span class="label">ATTRIBUTES (Base Stats)</span>
+		<p class="help-text">Rolled Attributes = Base - Resistance Modifier</p>
+	</div>
+	<div class="stats-container">
+		<div class="dw stats">
+			<div class="dw-statbox">
+				<div class="dw-stat-header">
+					<span class="dw-statname-short" data-i18n="str-u">STR</span>
+					<!-- <span class="dw-statname-long" data-i18n="strength">Strength</span> -->
+					<input type="number" name="attr_strength" value="10">
+				</div>
+				<!-- <div class="dw-stat-debility">
+						<label><span class="dw-debility-name" data-i18n="weak-1">Weak -1</span>
+						<input type="checkbox" name="attr_debil_weak" value="1"></label>
+				</div> -->
+				<div class="dw-stat-footer">
+					<div class="dw-stat-circle">
+					<button type="roll" name="roll_strength" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Strength}} {{result=[[@{rolltype} + @{strength_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+						<br />
+						<input type="hidden" name="attr_calc_strength_mod" value="0" />
+						<input type="number" class="dw-statbonus" name="attr_strength_mod" value="@{calc_strength_mod}" disabled="true">
+					</button>
+					</div>
+				</div>
+			</div>
+			<div class="dw-statbox">
+				<div class="dw-stat-header">
+					<span class="dw-statname-short" data-i18n="dex-u">DEX</span>
+					<!-- <span class="dw-statname-long" data-i18n="dexterity">Dexterity</span> -->
+					<input type="number" name="attr_dexterity" value="10">
+				</div>
+				<!-- <div class="dw-stat-debility">
+						<label><span class="dw-debility-name" data-i18n="shaky-1">Shaky -1</span>
+						<input type="checkbox" name="attr_debil_shaky" value="1"></label>
+					</div> -->
+				<div class="dw-stat-footer">
+					<div class="dw-stat-circle">
+					<button type="roll" name="roll_dexterity" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Dexterity}} {{result=[[@{rolltype} + @{dexterity_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+						<br />
+						<span class="dw-statname-short" data-i18n="dex-u">DEX</span>
+						<br />
+						<input type="hidden" name="attr_calc_dexterity_mod" value="0" />
+						<input type="number" class="dw-statbonus" name="attr_dexterity_mod" value="@{calc_dexterity_mod}" disabled="true">
+					</button>
+					</div>
+				</div>
+			</div>
+			<div class="dw-statbox">
+				<div class="dw-stat-header">
+					<span class="dw-statname-short" data-i18n="con-u">CON</span>
+					<!-- <span class="dw-statname-long" data-i18n="constitution">Constitution</span> -->
+					<input type="number" name="attr_constitution" value="10">
+				</div>
+				<!-- <div class="dw-stat-debility">
+						<label><span class="dw-debility-name" data-i18n="sick-1">Sick -1</span>
+						<input type="checkbox" name="attr_debil_sick" value="1"></label>
+					</div> -->
+				<div class="dw-stat-footer">
+					<div class="dw-stat-circle">
+					<button type="roll" name="roll_constitution" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Constitution}} {{result=[[@{rolltype} + @{constitution_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+						<br />
+						<span class="dw-statname-short" data-i18n="con-u">CON</span>
+						<br />
+						<input type="hidden" name="attr_calc_constitution_mod" value="0" />
+						<input type="number" class="dw-statbonus" name="attr_constitution_mod" value="@{calc_constitution_mod}" disabled="true">
+					</button>
+					</div>
+				</div>
+			</div>
+			<div class="dw-statbox">
+				<div class="dw-stat-header">
+					<span class="dw-statname-short" data-i18n="int-u">INT</span>
+					<!-- <span class="dw-statname-long" data-i18n="intelligence">Intelligence</span> -->
+					<input type="number" name="attr_intelligence" value="10">
+				</div>
+				<!-- <div class="dw-stat-debility">
+						<label><span class="dw-debility-name" data-i18n="stunned-1">Stunned -1</span>
+						<input type="checkbox" name="attr_debil_stunned" value="1"></label>
+					</div> -->
+				<div class="dw-stat-footer">
+					<div class="dw-stat-circle">
+					<button type="roll" name="roll_intelligence" value="&{template:dwgeneral} {{charname=@{character_name}}}{{rollname=Intelligence}} {{result=[[@{rolltype} + @{intelligence_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+						<br />
+						<span class="dw-statname-short" data-i18n="int-u">INT</span>
+						<br />
+						<input type="hidden" name="attr_calc_intelligence_mod" value="0" />
+						<input type="number" class="dw-statbonus" name="attr_intelligence_mod" value="@{calc_intelligence_mod}" disabled="true">
+					</button>
+					</div>
+				</div>
+			</div>
+			<div class="dw-statbox">
+				<div class="dw-stat-header">
+					<span class="dw-statname-short" data-i18n="wis-u">WIS</span>
+					<!-- <span class="dw-statname-long" data-i18n="wisdom">Wisdom</span> -->
+					<input type="number" name="attr_wisdom" value="10">
+				</div>
+				<!-- <div class="dw-stat-debility">
+						<label><span class="dw-debility-name" data-i18n="confused-1">Confused -1</span>
+						<input type="checkbox" name="attr_debil_confused" value="1"></label>
+					</div> -->
+				<div class="dw-stat-footer">
+					<div class="dw-stat-circle">
+					<button type="roll" name="roll_wisdom" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Wisdom}} {{result=[[@{rolltype} + @{wisdom_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+						<br />
+						<span class="dw-statname-short" data-i18n="wis-u">WIS</span>
+						<br />
+						<input type="hidden" name="attr_calc_wisdom_mod" value="0" />
+						<input type="number" class="dw-statbonus" name="attr_wisdom_mod" value="@{calc_wisdom_mod}" disabled="true">
+					</button>
+					</div>
+				</div>
+			</div>
+			<div class="dw-statbox">
+				<div class="dw-stat-header">
+					<span class="dw-statname-short" data-i18n="cha-u">CHA</span>
+					<!-- <span class="dw-statname-long" data-i18n="charisma">Charisma</span> -->
+					<input type="number" name="attr_charisma" value="10">
+				</div>
+				<!-- <div class="dw-stat-debility">
+						<label><span class="dw-debility-name" data-i18n="scarred-1">Scarred -1</span>
+						<input type="checkbox" name="attr_debil_scarred" value="1"></label>
+					</div> -->
+				<div class="dw-stat-footer">
+					<div class="dw-stat-circle">
+					<button type="roll" name="roll_charisma" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Charisma}} {{result=[[@{rolltype} + @{charisma_mod} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">
+						<br />
+						<span class="dw-statname-short" data-i18n="cha-u">CHA</span>
+						<br />
+						<input type="hidden" name="attr_calc_charisma_mod" value="0" />
+						<input type="number" class="dw-statbonus" name="attr_charisma_mod" value="@{calc_charisma_mod}" disabled="true">
+					</button>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>
@@ -2393,6 +2690,67 @@ on("change:charisma change:debil_scarred", function() {
 	getAttrs(["charisma", "debil_scarred"], function(values) {
 		setAttrs({
 			calc_charisma_mod: calculateMod(values.charisma) - values.debil_scarred
+		});
+	});
+});
+
+// Calculate rollable attribute values (base modifier minus condition penalty)
+on("change:strength_mod change:wounded_severity", function() {
+	getAttrs(["strength_mod", "wounded_severity"], function(values) {
+		var strMod = parseInt(values.strength_mod) || 0;
+		var woundedSev = parseInt(values.wounded_severity) || 0;
+		setAttrs({
+			str_rollable: strMod - woundedSev
+		});
+	});
+});
+
+on("change:dexterity_mod change:hobbled_severity", function() {
+	getAttrs(["dexterity_mod", "hobbled_severity"], function(values) {
+		var dexMod = parseInt(values.dexterity_mod) || 0;
+		var hobbledSev = parseInt(values.hobbled_severity) || 0;
+		setAttrs({
+			dex_rollable: dexMod - hobbledSev
+		});
+	});
+});
+
+on("change:constitution_mod change:exhausted_severity", function() {
+	getAttrs(["constitution_mod", "exhausted_severity"], function(values) {
+		var conMod = parseInt(values.constitution_mod) || 0;
+		var exhaustedSev = parseInt(values.exhausted_severity) || 0;
+		setAttrs({
+			con_rollable: conMod - exhaustedSev
+		});
+	});
+});
+
+on("change:intelligence_mod change:panicked_severity", function() {
+	getAttrs(["intelligence_mod", "panicked_severity"], function(values) {
+		var intMod = parseInt(values.intelligence_mod) || 0;
+		var panickedSev = parseInt(values.panicked_severity) || 0;
+		setAttrs({
+			int_rollable: intMod - panickedSev
+		});
+	});
+});
+
+on("change:wisdom_mod change:agitated_severity", function() {
+	getAttrs(["wisdom_mod", "agitated_severity"], function(values) {
+		var wisMod = parseInt(values.wisdom_mod) || 0;
+		var agitatedSev = parseInt(values.agitated_severity) || 0;
+		setAttrs({
+			wis_rollable: wisMod - agitatedSev
+		});
+	});
+});
+
+on("change:charisma_mod change:shamed_severity", function() {
+	getAttrs(["charisma_mod", "shamed_severity"], function(values) {
+		var chaMod = parseInt(values.charisma_mod) || 0;
+		var shamedSev = parseInt(values.shamed_severity) || 0;
+		setAttrs({
+			cha_rollable: chaMod - shamedSev
 		});
 	});
 });

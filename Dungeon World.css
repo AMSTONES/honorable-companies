@@ -278,12 +278,12 @@
 
 input[type=radio],
 .sheet-invisible {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px; margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
+	border: 0; 
+	clip: rect(0 0 0 0); 
+	height: 1px; margin: -1px; 
+	overflow: hidden; 
+	padding: 0; 
+	position: absolute; 
 	width: 1px;
 }
 
@@ -536,6 +536,23 @@ input[type=number]::-webkit-outer-spin-button {
 	margin-top: 8px;
 }
 
+.sheet-look-alignment-container {
+	/* max-width: 552px; */
+}
+
+.sheet-weapon-main {
+	display: flex;
+	gap: 5px;
+}
+
+.sheet-weapon-main select {
+	width: 195px;
+}
+ 
+.sheet-weapons-shields-container {
+	max-width: 552px;
+}
+
 .sheet-mid-header {
 	flex: 0 0 20px;
 	border-radius: 2px;
@@ -679,7 +696,7 @@ input[type=number]::-webkit-outer-spin-button {
 	flex: 0 0 auto;
 	color: white;
 	background-color: rgb(35, 31, 32);
-	width: 160px;
+	width: 80px;
 	max-height: 84px;
 	padding: 2px;
 	border: 0px solid;
@@ -740,13 +757,13 @@ button span {
 }
 
 .sheet-dw-stat-footer {
-	max-height: 35px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
 }
 
 .sheet-dw-stat-circle {
-	position:relative;
-	top: -12px;
-	left: 12px;
 	width: 65px;
 	height: 65px;
 	background: white;
@@ -892,12 +909,12 @@ button span {
 
 .sheet-toggler input[type=radio],
 .sheet-toggler input[type=checkbox] {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px; margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
+	border: 0; 
+	clip: rect(0 0 0 0); 
+	height: 1px; margin: -1px; 
+	overflow: hidden; 
+	padding: 0; 
+	position: absolute; 
 	width: 1px;
 }
 
@@ -1337,4 +1354,401 @@ textarea.sheet-gear-details {
 }
 .sheet-notes2{
 	margin-left:10px;
+}
+
+/* ===== NEW ROLLABLE ATTRIBUTES SECTION STYLES ===== */
+.sheet-rollable-attributes-container {
+	margin: 8px;
+	background-color: rgba(255, 255, 255, 0.9);
+	border: 1px solid rgb(35, 31, 32);
+	border-radius: 8px;
+	padding: 10px;
+}
+
+.sheet-attributes-header {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.sheet-attributes-header .sheet-label {
+	font-size: 16px;
+	font-weight: bold;
+	color: rgb(35, 31, 32);
+	background-color: rgb(230, 231, 233);
+	padding: 5px 15px;
+	border-radius: 4px;
+	display: inline-block;
+}
+
+.sheet-attributes-header .sheet-help-text {
+	font-size: 12px;
+	color: #666;
+	margin: 5px 0 0 0;
+	font-style: italic;
+}
+
+.sheet-attributes-grid {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 10px;
+	margin-bottom: 15px;
+}
+
+.sheet-attribute-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.sheet-attribute-item button[type=roll] {
+	width: 70px;
+	height: 70px;
+	border: 2px solid rgb(35, 31, 32);
+	border-radius: 50%;
+	background: linear-gradient(135deg, white 0%, rgb(230, 231, 233) 100%);
+	color: rgb(35, 31, 32);
+	font-weight: bold;
+	font-size: 12px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 2px;
+}
+
+.sheet-attribute-item button[type=roll]:hover {
+	background: linear-gradient(135deg, #EC2127 0%, #d41e23 100%);
+	color: white;
+	border-color: #EC2127;
+	transform: scale(1.05);
+}
+
+.sheet-attribute-item .sheet-attr-label {
+	font-weight: bold;
+	font-size: 11px;
+	margin-bottom: 2px;
+}
+
+.sheet-attribute-item .sheet-attr-value {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.sheet-utility-rolls {
+	border-top: 1px solid #ddd;
+	padding-top: 10px;
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.sheet-utility-rolls .sheet-skill-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.sheet-utility-rolls button[type=roll] {
+	background: rgb(35, 31, 32);
+	color: white;
+	border: 1px solid rgb(35, 31, 32);
+	border-radius: 4px;
+	padding: 6px 12px;
+	font-size: 12px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.sheet-utility-rolls button[type=roll]:hover {
+	background: #EC2127;
+	border-color: #EC2127;
+}
+
+.sheet-advantage-buttons {
+	display: flex;
+	gap: 8px;
+}
+
+.sheet-advantage-buttons input[type=radio] {
+	position: relative;
+	width: auto;
+	height: auto;
+	clip: unset;
+	margin: 0 5px 0 0;
+}
+
+/* ===== CONDITIONS AND DAMAGE TRACKING STYLES ===== */
+.sheet-conditions-container {
+	margin: 8px;
+	background-color: rgba(255, 255, 255, 0.9);
+	border: 1px solid rgb(35, 31, 32);
+	border-radius: 8px;
+	padding: 10px;
+}
+
+.sheet-conditions-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #ddd;
+}
+
+.sheet-conditions-header .sheet-label {
+	font-size: 16px;
+	font-weight: bold;
+	color: rgb(35, 31, 32);
+}
+
+.sheet-death-tracker {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.sheet-death-tracker .sheet-label {
+	font-size: 12px;
+	font-weight: bold;
+	color: #EC2127;
+}
+
+.sheet-death-count input[type=number] {
+	width: 40px;
+	text-align: center;
+	border: 1px solid #EC2127;
+	border-radius: 3px;
+	padding: 2px;
+}
+
+.sheet-conditions-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.sheet-condition-category {
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.sheet-condition-category.sheet-physical {
+	border-left: 4px solid #EC2127;
+}
+
+.sheet-condition-category.sheet-mental {
+	border-left: 4px solid #6B4F9B;
+}
+
+.sheet-condition-header {
+	font-size: 14px;
+	font-weight: bold;
+	color: rgb(35, 31, 32);
+	margin-bottom: 10px;
+	text-align: center;
+	padding: 5px;
+	background-color: rgba(230, 231, 233, 0.7);
+	border-radius: 4px;
+}
+
+.sheet-condition-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 8px;
+	padding: 8px;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 4px;
+	border: 1px solid #eee;
+}
+
+.sheet-condition-name {
+	font-weight: bold;
+	font-size: 12px;
+	min-width: 100px;
+	color: rgb(35, 31, 32);
+}
+
+.sheet-condition-row select {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 4px;
+	font-size: 11px;
+	min-width: 100px;
+}
+
+.sheet-damage-state {
+	display: flex;
+	gap: 8px;
+	font-size: 11px;
+	flex-wrap: wrap;
+}
+
+.sheet-damage-state input[type=radio] {
+	position: relative;
+	width: auto;
+	height: auto;
+	clip: unset;
+	margin: 0 3px 0 0;
+}
+
+.sheet-damage-state label {
+	cursor: pointer;
+	color: rgb(35, 31, 32);
+}
+
+/* ===== RESISTANCE SECTION STYLES ===== */
+.sheet-resistance-section {
+	margin-top: 15px;
+	padding-top: 15px;
+	border-top: 1px solid #ddd;
+}
+
+.sheet-resistance-stats {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 15px;
+}
+
+.sheet-resistance-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 5px;
+}
+
+.sheet-resistance-item label {
+	font-size: 11px;
+	font-weight: bold;
+	color: rgb(35, 31, 32);
+	text-align: center;
+}
+
+.sheet-resistance-item input[type=number] {
+	width: 60px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 4px;
+}
+
+/* ===== EQUIPMENT SECTION STYLES ===== */
+.sheet-equipment-combat-container {
+	margin: 8px;
+	background-color: rgba(255, 255, 255, 0.9);
+	border: 1px solid rgb(35, 31, 32);
+	border-radius: 8px;
+	padding: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.sheet-armor-section, .sheet-weapons-section {
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.sheet-armor-header, .sheet-weapons-header {
+	font-size: 14px;
+	font-weight: bold;
+	color: rgb(35, 31, 32);
+	margin-bottom: 10px;
+	text-align: center;
+	padding: 5px;
+	background-color: rgba(230, 231, 233, 0.7);
+	border-radius: 4px;
+}
+
+.sheet-armor-content, .sheet-weapon-row {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.sheet-armor-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.sheet-armor-item label {
+	font-size: 11px;
+	font-weight: bold;
+	min-width: 80px;
+	color: rgb(35, 31, 32);
+}
+
+.sheet-armor-item input, .sheet-armor-item textarea {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 4px;
+	font-size: 11px;
+}
+
+.sheet-armor-item textarea {
+	resize: vertical;
+	min-height: 40px;
+}
+
+.sheet-weapon-row {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid #eee;
+	border-radius: 4px;
+	padding: 8px;
+}
+
+.sheet-weapon-row input, .sheet-weapon-row select {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 4px;
+	font-size: 11px;
+	margin-bottom: 5px;
+}
+
+.sheet-weapon-row button[type=roll] {
+	background: #EC2127;
+	color: white;
+	border: 1px solid #EC2127;
+	border-radius: 4px;
+	padding: 6px 12px;
+	font-size: 11px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-top: 5px;
+}
+
+.sheet-weapon-row button[type=roll]:hover {
+	background: #d41e23;
+}
+
+/* ===== ATTRIBUTES BOTTOM SECTION STYLES ===== */
+.sheet-attributes-bottom-container {
+	margin: 8px;
+	background-color: rgba(255, 255, 255, 0.9);
+	border: 1px solid rgb(35, 31, 32);
+	border-radius: 8px;
+	padding: 10px;
+}
+
+.sheet-attributes-bottom-container .sheet-attributes-header {
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.sheet-attributes-bottom-container .sheet-help-text {
+	font-size: 12px;
+	color: #666;
+	margin: 5px 0;
+	font-style: italic;
+	text-align: center;
 }
