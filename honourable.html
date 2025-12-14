@@ -1,5 +1,7 @@
 <input type="hidden" name="attr_rolltype" value="2d6">
-<input type="hidden" name="attr_statmod_query" value="?{Stat|STR,@{strength_mod}[strength]|DEX, @{dexterity_mod}[dexterity]|CON, @{constitution_mod}[constitution]|INT, @{intelligence_mod}[intelligence]|WIS, @{wisdom_mod}[wisdom]|CHA, @{charisma_mod}[charisma]}">
+<input type="hidden" name="attr_statmod_query" value="?{Stat|STR,@{str_mod_current}[strength]|DEX,@{dex_mod_current}[dexterity]|CON,@{con_mod_current}[constitution]|INT,@{int_mod_current}[intelligence]|WIS,@{wis_mod_current}[wisdom]|CHA,@{cha_mod_current}[charisma]}">
+<input type="hidden" name="attr_character_name" value="">
+<input type="hidden" name="attr_rollforward" value="0">
 <!-- <input type="hidden" name="attr_levels_prepared" value="0"> -->
 <!-- <input type="hidden" name="attr_global_dmg" value="0"> -->
 <!-- <input type="hidden" name="attr_global_arm" value="0"> -->
@@ -97,215 +99,257 @@
 <input type="hidden" name="attr_cha_wound_total" value="0">
 
 <!-- Sheet start -->
+<!-- STATS DISPLAY -->
 <div>
     <span>STR</span>
     <input type="number" name="attr_str"></input>
     <span name="attr_str_mod"></span>
-</div>
-
-<div>
-    <span>STR MOD CURRENT</span>
+    <span>Current:</span>
     <span name="attr_str_mod_current"></span>
-    <button type="roll" value="/roll 2d6 + @{str_mod_current}" name="roll_strCheck">Roll Str</button>
-</div>
-
-<div>
-    <span>STR Wounds:</span>
-    <select name="attr_str_wound_minor">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_str_wound_moderate">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_str_wound_severe">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_str_wound_terminal">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
+    <button type="roll" value="/roll 2d6 + @{str_mod_current}" name="roll_strCheck">Roll</button>
 </div>
 
 <div>
     <span>DEX</span>
     <input type="number" name="attr_dex"></input>
     <span name="attr_dex_mod"></span>
-</div>
-
-<div>
-    <span>DEX MOD CURRENT</span>
+    <span>Current:</span>
     <span name="attr_dex_mod_current"></span>
-</div>
-
-<div>
-    <span>DEX Wounds:</span>
-    <select name="attr_dex_wound_minor">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_dex_wound_moderate">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_dex_wound_severe">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_dex_wound_terminal">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
+    <button type="roll" value="/roll 2d6 + @{dex_mod_current}" name="roll_dexCheck">Roll</button>
 </div>
 
 <div>
     <span>CON</span>
     <input type="number" name="attr_con"></input>
     <span name="attr_con_mod"></span>
-</div>
-
-<div>
-    <span>CON MOD CURRENT</span>
+    <span>Current:</span>
     <span name="attr_con_mod_current"></span>
-</div>
-
-<div>
-    <span>CON Wounds:</span>
-    <select name="attr_con_wound_minor">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_con_wound_moderate">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_con_wound_severe">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_con_wound_terminal">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
+    <button type="roll" value="/roll 2d6 + @{con_mod_current}" name="roll_conCheck">Roll</button>
 </div>
 
 <div>
     <span>INT</span>
     <input type="number" name="attr_int"></input>
     <span name="attr_int_mod"></span>
-</div>
-
-<div>
-    <span>INT MOD CURRENT</span>
+    <span>Current:</span>
     <span name="attr_int_mod_current"></span>
-</div>
-
-<div>
-    <span>INT Wounds:</span>
-    <select name="attr_int_wound_minor">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_int_wound_moderate">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_int_wound_severe">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_int_wound_terminal">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
+    <button type="roll" value="/roll 2d6 + @{int_mod_current}" name="roll_intCheck">Roll</button>
 </div>
 
 <div>
     <span>WIS</span>
     <input type="number" name="attr_wis"></input>
     <span name="attr_wis_mod"></span>
-</div>
-
-<div>
-    <span>WIS MOD CURRENT</span>
+    <span>Current:</span>
     <span name="attr_wis_mod_current"></span>
-</div>
-
-<div>
-    <span>WIS Wounds:</span>
-    <select name="attr_wis_wound_minor">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_wis_wound_moderate">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_wis_wound_severe">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_wis_wound_terminal">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
+    <button type="roll" value="/roll 2d6 + @{wis_mod_current}" name="roll_wisCheck">Roll</button>
 </div>
 
 <div>
     <span>CHA</span>
     <input type="number" name="attr_cha"></input>
     <span name="attr_cha_mod"></span>
-</div>
-
-<div>
-    <span>CHA MOD CURRENT</span>
+    <span>Current:</span>
     <span name="attr_cha_mod_current"></span>
+    <button type="roll" value="/roll 2d6 + @{cha_mod_current}" name="roll_chaCheck">Roll</button>
 </div>
 
+<!-- ROLLABLE ATTRIBUTES SECTION -->
 <div>
-    <span>CHA Wounds:</span>
-    <select name="attr_cha_wound_minor">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_cha_wound_moderate">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_cha_wound_severe">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
-    <select name="attr_cha_wound_terminal">
-        <option value="0">N/A</option>
-        <option value="1">Stale</option>
-        <option value="2">Fresh</option>
-    </select>
+	<span>ROLLABLE ATTRIBUTES</span>
+</div>
+<div>
+	<button type="roll" name="roll_str_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=STR (Modified)}} {{result=[[@{rolltype} + @{str_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">STR <span name="attr_str_mod_current"></span></button>
+	<button type="roll" name="roll_dex_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=DEX (Modified)}} {{result=[[@{rolltype} + @{dex_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">DEX</button>
+	<button type="roll" name="roll_con_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=CON (Modified)}} {{result=[[@{rolltype} + @{con_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">CON</button>
+	<button type="roll" name="roll_int_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=INT (Modified)}} {{result=[[@{rolltype} + @{int_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">INT</button>
+	<button type="roll" name="roll_wis_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=WIS (Modified)}} {{result=[[@{rolltype} + @{wis_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">WIS</button>
+	<button type="roll" name="roll_cha_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=CHA (Modified)}} {{result=[[@{rolltype} + @{cha_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">CHA</button>
+</div>
+<div>
+	<button type="roll" name="roll_defy_danger" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Defy Danger}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">Defy Danger</button>
+	<button type="roll" name="roll_resistance" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Resistance}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">Resistance</button>
+</div>
+<div>
+	<label>Advantage/Disadvantage:</label>
+	<input type="radio" name="attr_advantage_state" value="advantage"> Advantage
+	<input type="radio" name="attr_advantage_state" value="normal" checked="checked"> Normal
+	<input type="radio" name="attr_advantage_state" value="disadvantage"> Disadvantage
+</div>
+
+<!-- CONDITIONS AND DAMAGE TRACKING -->
+<div class="conditions-container">
+	<div class="conditions-header">
+		<span class="label">CONDITIONS & DAMAGE TRACKING</span>
+		<div class="death-tracker">
+			<span class="label">BLACK GATE:</span>
+			<div class="death-symbols">
+				<span class="death-count" title="Death Markers">SKULLS: <input type="number" name="attr_death_count" value="0"></span>
+			</div>
+		</div>
+	</div>
+	<div class="conditions-grid">
+		<div class="condition-category physical">
+			<div class="condition-header">PHYSICAL CONDITIONS</div>
+			<div class="condition-row">
+				<label class="condition-name">Wounded (STR):</label>
+				<select name="attr_str_wound_minor">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>   
+				<select name="attr_str_wound_moderate">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_str_wound_severe">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_str_wound_terminal">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+			</div>
+			<div class="condition-row">
+				<label class="condition-name">Hobbled (DEX):</label>
+				<select name="attr_dex_wound_minor">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_dex_wound_moderate">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_dex_wound_severe">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_dex_wound_terminal">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+			</div>
+			<div class="condition-row">
+				<label class="condition-name">Exhausted (CON):</label>
+				<select name="attr_con_wound_minor">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_con_wound_moderate">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_con_wound_severe">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_con_wound_terminal">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+			</div>
+		</div>
+		<div class="condition-category mental">
+			<div class="condition-header">MENTAL CONDITIONS</div>
+			<div class="condition-row">
+				<label class="condition-name">Panicked (INT):</label>
+				<select name="attr_int_wound_minor">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_int_wound_moderate">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_int_wound_severe">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_int_wound_terminal">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+			</div>
+			<div class="condition-row">
+				<label class="condition-name">Agitated (WIS):</label>
+				<select name="attr_wis_wound_minor">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_wis_wound_moderate">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_wis_wound_severe">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_wis_wound_terminal">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+			</div>
+			<div class="condition-row">
+				<label class="condition-name">Shamed (CHA):</label>
+				<select name="attr_cha_wound_minor">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_cha_wound_moderate">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_cha_wound_severe">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+				<select name="attr_cha_wound_terminal">
+					<option value="0">N/A</option>
+					<option value="1">Stale</option>
+					<option value="2">Fresh</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="resistance-section">
+		<div class="resistance-stats">
+			<div class="resistance-item">
+				<label>RES to Spend (Max):</label>
+				<input type="number" name="attr_resistance_max" value="0">
+			</div>
+			<div class="resistance-item">
+				<label>Current RES:</label>
+				<input type="number" name="attr_resistance_current" value="0">
+			</div>
+			<div class="resistance-item">
+				<label>Resistance Modifier:</label>
+				<input type="number" name="attr_resistance_mod" value="0" disabled="true">
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="armor">
@@ -629,3 +673,44 @@
         });
     }
 </script>
+
+<rolltemplate class="sheet-rolltemplate-dwgeneral">
+<div class="rt-container">
+	{{#rollname}}
+	<div class="rt-header rt-header-minor">{{charname}} <span data-i18n="rolls">rolls</span> {{rollname}}</div>
+	{{/rollname}}
+	{{#infoname}}
+	<div class="rt-header rt-header-minor">{{charname}} <span data-i18n="displays">displays</span> {{infoname}}</div>
+	{{/infoname}}
+	{{#tags}}
+	<div class="rt-header rt-header-minor"><em>{{tags}}</em></div>
+	{{/tags}}
+	<div class="rt-content">
+		{{#doroll}}
+			{{#rollGreater() doroll 0}}
+			{{#result}}
+			<div class="rt-row">
+				<span class="label rt-label" data-i18n="move-roll">Roll:</span>
+				<span class="rt-value rt-text">{{result}}</span>
+			</div>
+			{{/result}}
+			{{/rollGreater() doroll 0}}
+		{{/doroll}}
+		{{^doroll}}
+			{{#result}}
+			<div class="rt-row">
+				<span class="label rt-label" data-i18n="move-roll">Roll:</span>
+				<span class="rt-value rt-text">{{result}}</span>
+			</div>
+			{{/result}}
+		{{/doroll}}
+		{{#details}}
+		<div class="rt-row">
+			<span class="rt-value rt-text">{{details}}</span>
+		</div>
+		{{/details}}
+	</div>
+
+
+</div>
+</rolltemplate>
