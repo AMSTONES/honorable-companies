@@ -1,0 +1,430 @@
+<input type="hidden" name="attr_rolltype" value="2d6">
+<input type="hidden" name="attr_statmod_query" value="?{Stat|STR,@{strength_mod}[strength]|DEX, @{dexterity_mod}[dexterity]|CON, @{constitution_mod}[constitution]|INT, @{intelligence_mod}[intelligence]|WIS, @{wisdom_mod}[wisdom]|CHA, @{charisma_mod}[charisma]}">
+<input type="hidden" name="attr_levels_prepared" value="0">
+<input type="hidden" name="attr_global_dmg" value="0">
+<input type="hidden" name="attr_global_arm" value="0">
+<input type="hidden" name="attr_global_ongoing" value="0">
+<input type="hidden" name="attr_equipment_dmg" value="10">
+<input type="hidden" name="attr_equipment_armor" value="0">
+<input type="hidden" name="attr_equipment_armormod" value="0">
+<input type="hidden" name="attr_equipment_totalarmor" value="0">
+<input type="hidden" name="attr_bond_query" value="(0)[Other Bond]">
+
+
+<!-- Baseline stats -->
+<input type="hidden" name="attr_str" value="0">
+<input type="hidden" name="attr_dex" value="0">
+<input type="hidden" name="attr_con" value="0">
+<input type="hidden" name="attr_int" value="0">
+<input type="hidden" name="attr_wis" value="0">
+<input type="hidden" name="attr_cha" value="0">
+
+<!-- Stat Modifier - Baseline -->
+<input type="hidden" name="attr_str_mod" value="0">
+<input type="hidden" name="attr_dex_mod" value="0">
+<input type="hidden" name="attr_con_mod" value="0">
+<input type="hidden" name="attr_int_mod" value="0">
+<input type="hidden" name="attr_wis_mod" value="0">
+<input type="hidden" name="attr_cha_mod" value="0">
+
+<!-- This is the stats after modification due to injury -->
+<input type="hidden" name="attr_str_mod_current" value="0">
+<input type="hidden" name="attr_dex_mod_current" value="0">
+<input type="hidden" name="attr_con_mod_current" value="0">
+<input type="hidden" name="attr_int_mod_current" value="0">
+<input type="hidden" name="attr_wis_mod_current" value="0">
+<input type="hidden" name="attr_cha_mod_current" value="0">
+
+<!-- Resistances (a spendable resource), also has as maximum -->
+<input type="hidden" name="attr_str_resistance_current" value="0">
+<input type="hidden" name="attr_str_resistance_max" value="0">
+<input type="hidden" name="attr_dex_resistance_current" value="0">
+<input type="hidden" name="attr_dex_resistance_max" value="0">
+<input type="hidden" name="attr_con_resistance_current" value="0">
+<input type="hidden" name="attr_con_resistance_max" value="0">
+<input type="hidden" name="attr_int_resistance_current" value="0">
+<input type="hidden" name="attr_int_resistance_max" value="0">
+<input type="hidden" name="attr_wis_resistance_current" value="0">
+<input type="hidden" name="attr_wis_resistance_max" value="0">
+<input type="hidden" name="attr_cha_resistance_current" value="0">
+<input type="hidden" name="attr_cha_resistance_max" value="0">
+
+<!-- Wounds, for each statistic 4 levels of severity [minor, moderate, severe, terminal]-->
+<!-- Wounds of each severity can be N/A, stale or fresh (0, 1, 2) So four checkboxes for each stat, with 3 options -->
+ 
+<input type="hidden" name="attr_str_wound_minor" value="0">
+<input type="hidden" name="attr_str_wound_moderate" value="0">
+<input type="hidden" name="attr_str_wound_severe" value="0">
+<input type="hidden" name="attr_str_wound_terminal" value="0">
+<input type="hidden" name="attr_str_wound_total" value="0">
+
+<input type="hidden" name="attr_dex_wound_minor" value="0">
+<input type="hidden" name="attr_dex_wound_moderate" value="0">
+<input type="hidden" name="attr_dex_wound_severe" value="0">
+<input type="hidden" name="attr_dex_wound_terminal" value="0">
+<input type="hidden" name="attr_dex_wound_total" value="0">
+
+<input type="hidden" name="attr_con_wound_minor" value="0">
+<input type="hidden" name="attr_con_wound_moderate" value="0">
+<input type="hidden" name="attr_con_wound_severe" value="0">
+<input type="hidden" name="attr_con_wound_terminal" value="0">
+<input type="hidden" name="attr_con_wound_total" value="0">
+
+<input type="hidden" name="attr_int_wound_minor" value="0">
+<input type="hidden" name="attr_int_wound_moderate" value="0">
+<input type="hidden" name="attr_int_wound_severe" value="0">
+<input type="hidden" name="attr_int_wound_terminal" value="0">
+<input type="hidden" name="attr_int_wound_total" value="0">
+
+<input type="hidden" name="attr_wis_wound_minor" value="0">
+<input type="hidden" name="attr_wis_wound_moderate" value="0">
+<input type="hidden" name="attr_wis_wound_severe" value="0">
+<input type="hidden" name="attr_wis_wound_terminal" value="0">
+<input type="hidden" name="attr_wis_wound_total" value="0">
+
+<input type="hidden" name="attr_cha_wound_minor" value="0">
+<input type="hidden" name="attr_cha_wound_moderate" value="0">
+<input type="hidden" name="attr_cha_wound_severe" value="0">
+<input type="hidden" name="attr_cha_wound_terminal" value="0">
+<input type="hidden" name="attr_cha_wound_total" value="0">
+
+<!-- Sheet start -->
+<div>
+    <span>STR</span>
+    <input type="number" name="attr_str"></input>
+    <span name="attr_str_mod"></span>
+</div>
+
+<div>
+    <span>STR MOD CURRENT</span>
+    <span name="attr_str_mod_current"></span>
+</div>
+
+<div>
+    <span>STR Wounds:</span>
+    <select name="attr_str_wound_minor">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_str_wound_moderate">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_str_wound_severe">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_str_wound_terminal">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+</div>
+
+<div>
+    <span>DEX</span>
+    <input type="number" name="attr_dex"></input>
+    <span name="attr_dex_mod"></span>
+</div>
+
+<div>
+    <span>DEX MOD CURRENT</span>
+    <span name="attr_dex_mod_current"></span>
+</div>
+
+<div>
+    <span>DEX Wounds:</span>
+    <select name="attr_dex_wound_minor">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_dex_wound_moderate">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_dex_wound_severe">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_dex_wound_terminal">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+</div>
+
+<div>
+    <span>CON</span>
+    <input type="number" name="attr_con"></input>
+    <span name="attr_con_mod"></span>
+</div>
+
+<div>
+    <span>CON MOD CURRENT</span>
+    <span name="attr_con_mod_current"></span>
+</div>
+
+<div>
+    <span>CON Wounds:</span>
+    <select name="attr_con_wound_minor">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_con_wound_moderate">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_con_wound_severe">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_con_wound_terminal">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+</div>
+
+<div>
+    <span>INT</span>
+    <input type="number" name="attr_int"></input>
+    <span name="attr_int_mod"></span>
+</div>
+
+<div>
+    <span>INT MOD CURRENT</span>
+    <span name="attr_int_mod_current"></span>
+</div>
+
+<div>
+    <span>INT Wounds:</span>
+    <select name="attr_int_wound_minor">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_int_wound_moderate">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_int_wound_severe">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_int_wound_terminal">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+</div>
+
+<div>
+    <span>WIS</span>
+    <input type="number" name="attr_wis"></input>
+    <span name="attr_wis_mod"></span>
+</div>
+
+<div>
+    <span>WIS MOD CURRENT</span>
+    <span name="attr_wis_mod_current"></span>
+</div>
+
+<div>
+    <span>WIS Wounds:</span>
+    <select name="attr_wis_wound_minor">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_wis_wound_moderate">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_wis_wound_severe">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_wis_wound_terminal">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+</div>
+
+<div>
+    <span>CHA</span>
+    <input type="number" name="attr_cha"></input>
+    <span name="attr_cha_mod"></span>
+</div>
+
+<div>
+    <span>CHA MOD CURRENT</span>
+    <span name="attr_cha_mod_current"></span>
+</div>
+
+<div>
+    <span>CHA Wounds:</span>
+    <select name="attr_cha_wound_minor">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_cha_wound_moderate">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_cha_wound_severe">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+    <select name="attr_cha_wound_terminal">
+        <option value="0">N/A</option>
+        <option value="1">Stale</option>
+        <option value="2">Fresh</option>
+    </select>
+</div>
+
+<script type="text/worker">
+    on("change:str change:dex change:con change:int change:wis change:cha change:str_wound_minor change:str_wound_moderate change:str_wound_severe change:str_wound_terminal change:dex_wound_minor change:dex_wound_moderate change:dex_wound_severe change:dex_wound_terminal change:con_wound_minor change:con_wound_moderate change:con_wound_severe change:con_wound_terminal change:int_wound_minor change:int_wound_moderate change:int_wound_severe change:int_wound_terminal change:wis_wound_minor change:wis_wound_moderate change:wis_wound_severe change:wis_wound_terminal change:cha_wound_minor change:cha_wound_moderate change:cha_wound_severe change:cha_wound_terminal sheet:opened", function(val) {
+        const stats = ["str", "dex", "con", "int", "wis", "cha"];
+        const attrsToGet = [...stats];
+        
+        // Add all wound attributes to fetch
+        for (let stat of stats) {
+            attrsToGet.push(`${stat}_wound_minor`, `${stat}_wound_moderate`, `${stat}_wound_severe`, `${stat}_wound_terminal`);
+        }
+        
+        getAttrs(attrsToGet, function(values) {
+            let updates = {};
+            for (let stat of stats) {
+                let value = parseInt(values[stat]) || 0;
+                let mod = getModifier(value);
+                updates[`${stat}_mod`] = mod;
+                
+                // Calculate injury modifier
+                let injuryMod = 0;
+                if (parseInt(values[`${stat}_wound_minor`]) > 0) injuryMod += 1;
+                if (parseInt(values[`${stat}_wound_moderate`]) > 0) injuryMod += 1;
+                if (parseInt(values[`${stat}_wound_severe`]) > 0) injuryMod += 1;
+                if (parseInt(values[`${stat}_wound_terminal`]) > 0) injuryMod += 1;
+                
+                updates[`${stat}_mod_current`] = mod - injuryMod;
+                console.log(`Stat: ${stat}, Value: ${value}, Mod: ${mod}, Injury Mod: ${injuryMod}`);
+            }
+            setAttrs(updates);
+        });
+    });
+
+    // Enforce wound freshness hierarchy: more severe wounds can't be fresher than less severe ones
+    on("change:str_wound_minor change:str_wound_moderate change:str_wound_severe change:str_wound_terminal change:dex_wound_minor change:dex_wound_moderate change:dex_wound_severe change:dex_wound_terminal change:con_wound_minor change:con_wound_moderate change:con_wound_severe change:con_wound_terminal change:int_wound_minor change:int_wound_moderate change:int_wound_severe change:int_wound_terminal change:wis_wound_minor change:wis_wound_moderate change:wis_wound_severe change:wis_wound_terminal change:cha_wound_minor change:cha_wound_moderate change:cha_wound_severe change:cha_wound_terminal", function(eventInfo) {
+        const stats = ["str", "dex", "con", "int", "wis", "cha"];
+        const allWoundAttrs = [];
+        
+        for (let stat of stats) {
+            allWoundAttrs.push(`${stat}_wound_minor`, `${stat}_wound_moderate`, `${stat}_wound_severe`, `${stat}_wound_terminal`);
+        }
+        
+        getAttrs(allWoundAttrs, function(values) {
+            let updates = {};
+            
+            for (let stat of stats) {
+                let minor = parseInt(values[`${stat}_wound_minor`]) || 0;
+                let moderate = parseInt(values[`${stat}_wound_moderate`]) || 0;
+                let severe = parseInt(values[`${stat}_wound_severe`]) || 0;
+                let terminal = parseInt(values[`${stat}_wound_terminal`]) || 0;
+                
+                // Enforce hierarchy: if a more severe wound is fresher, upgrade lesser wounds
+                // Terminal sets minimum for all others
+                if (terminal > 0) {
+                    if (severe < terminal) updates[`${stat}_wound_severe`] = terminal;
+                    if (moderate < terminal) updates[`${stat}_wound_moderate`] = terminal;
+                    if (minor < terminal) updates[`${stat}_wound_minor`] = terminal;
+                }
+                // Severe sets minimum for moderate and minor (if not already set by terminal)
+                if (severe > 0) {
+                    if (moderate < severe) updates[`${stat}_wound_moderate`] = severe;
+                    if (minor < severe) updates[`${stat}_wound_minor`] = severe;
+                }
+                // Moderate sets minimum for minor (if not already set)
+                if (moderate > 0) {
+                    if (minor < moderate) updates[`${stat}_wound_minor`] = moderate;
+                }
+            }
+            
+            // Only update if there are changes
+            if (Object.keys(updates).length > 0) {
+                setAttrs(updates);
+            }
+        });
+    });
+
+    function calculate_derived_stats() {
+        getAttrs([
+            "str",
+            "dex",
+            "con",
+            "int",
+            "wis",
+            "cha"
+        ], function(values) {
+            let derived_stats = {};
+            for (let stat of ["str", "dex", "con", "int", "wis", "cha"]) {
+                let injuryMod = getInjury(stat);
+                let statValue = parseInt(values[stat]) || 0;
+                let mod = getModifier(statValue) - injuryMod;
+                derived_stats[`${stat}_mod`] = mod;
+            }
+            setAttrs(derived_stats);
+        });
+    }
+
+    function getModifier(value) {
+        const ranges = [
+            { max: 0, mod: -4 },
+            { max: 2, mod: -3 },
+            { max: 4, mod: -2 },
+            { max: 8, mod: -1 },
+            { max: 12, mod: 0 },
+            { max: 15, mod: 1 },
+            { max: 17, mod: 2 },
+            { max: 18, mod: 3 },
+            { max: 19, mod: 4 },
+            { max: 20, mod: 5 }
+        ];
+        
+        return ranges.find(r => value <= r.max)?.mod ?? "";
+    }
+
+    function getInjury(stat) {
+        let statName = stat.toLowerCase();
+        getAttrs([
+            `${statName}_wound_minor`,
+            `${statName}_wound_moderate`,
+            `${statName}_wound_severe`,
+            `${statName}_wound_terminal`
+        ], function(values) {
+            let injury = 0;
+            if (values[`${statName}_wound_minor`] > 0) injury += 1;
+            if (values[`${statName}_wound_moderate`] > 0) injury += 1;
+            if (values[`${statName}_wound_severe`] > 0) injury += 1;
+            if (values[`${statName}_wound_terminal`] > 0) injury += 1;
+            console.log(`Injury for ${statName}: ${injury}`);
+            return injury;
+        });
+    }
+</script>
