@@ -1,13 +1,21 @@
 <input type="hidden" name="attr_rolltype" value="2d6">
 <input type="hidden" name="attr_statmod_query" value="?{Stat|STR,@{strength_mod}[strength]|DEX, @{dexterity_mod}[dexterity]|CON, @{constitution_mod}[constitution]|INT, @{intelligence_mod}[intelligence]|WIS, @{wisdom_mod}[wisdom]|CHA, @{charisma_mod}[charisma]}">
-<input type="hidden" name="attr_levels_prepared" value="0">
-<input type="hidden" name="attr_global_dmg" value="0">
-<input type="hidden" name="attr_global_arm" value="0">
+<!-- <input type="hidden" name="attr_levels_prepared" value="0"> -->
+<!-- <input type="hidden" name="attr_global_dmg" value="0"> -->
+<!-- <input type="hidden" name="attr_global_arm" value="0"> -->
 <input type="hidden" name="attr_global_ongoing" value="0">
 <input type="hidden" name="attr_equipment_dmg" value="0">
 <input type="hidden" name="attr_equipment_armor" value="0">
-<input type="hidden" name="attr_equipment_armormod" value="0">
-<input type="hidden" name="attr_equipment_totalarmor" value="0">
+<!-- <input type="hidden" name="attr_equipment_armormod" value="0"> -->
+<input type="hidden" name="attr_max_armor" value="0">
+<input type="hidden" name="attr_current_armor" value="0">
+<input type="hidden" name="attr_armor_spent" value="0">
+<input type="hidden" name="attr_max_shield" value="0">
+<input type="hidden" name="attr_current_shield" value="0">
+<input type="hidden" name="attr_shield_spent" value="0">
+<input type="hidden" name="attr_max_magic_resistance" value="0">
+<input type="hidden" name="attr_current_magic_resistance" value="0">
+<input type="hidden" name="attr_magic_resistance_spent" value="0">
 <input type="hidden" name="attr_bond_query" value="(0)[Other Bond]">
 
 
@@ -300,6 +308,51 @@
     </select>
 </div>
 
+<div class="armor">
+    <div>
+        <span>Armor Type:</span>
+        <select name="attr_armor_equipped">
+            <option value="0">No Armor</option>
+            <option value="1">Padded/Leather</option>
+            <option value="2">Mail/Scale</option>
+            <option value="3">Plated (Munition)</option>
+            <option value="4">Full Plate</option>
+        </select>
+        <span>Max:</span>
+        <span name="attr_max_armor"></span>
+        <span>Remaining:</span>
+        <input type="number" name="attr_current_armor" min="0" max="@{max_armor}" />
+    </div>
+    <br>
+    <div>
+        <span>Shield:</span>
+        <select name="attr_shield_equipped">
+            <option value="0">No Shield</option>
+            <option value="1">Wooden Shield</option>
+            <option value="2">Metal Shield</option>
+        </select>
+        <span>Max:</span>
+        <span name="attr_max_shield"></span>
+        <span>Remaining:</span>
+        <input type="number" name="attr_current_shield" min="0" max="@{max_shield}" />
+    </div>
+    <br>
+    <div>
+        <span>Magic Resistance:</span>
+        <select name="attr_magic_resistance">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <span>Max:</span>
+        <span name="attr_max_magic_resistance"></span>
+        <span>Remaining:</span>
+        <input type="number" name="attr_current_magic_resistance" min="0" max="@{max_magic_resistance}" />
+    </div>
+</div>
+
 <script type="text/worker">
     on("change:str change:dex change:con change:int change:wis change:cha change:str_wound_minor change:str_wound_moderate change:str_wound_severe change:str_wound_terminal change:dex_wound_minor change:dex_wound_moderate change:dex_wound_severe change:dex_wound_terminal change:con_wound_minor change:con_wound_moderate change:con_wound_severe change:con_wound_terminal change:int_wound_minor change:int_wound_moderate change:int_wound_severe change:int_wound_terminal change:wis_wound_minor change:wis_wound_moderate change:wis_wound_severe change:wis_wound_terminal change:cha_wound_minor change:cha_wound_moderate change:cha_wound_severe change:cha_wound_terminal sheet:opened", function(val) {
         const stats = ["str", "dex", "con", "int", "wis", "cha"];
@@ -371,6 +424,153 @@
             if (Object.keys(updates).length > 0) {
                 setAttrs(updates);
             }
+        });
+    });
+
+    // Calculate max armor based on equipment
+    on("change:armor_equipped sheet:opened", function() {
+        getAttrs(["armor_equipped", "current_armor", "max_armor"], function(values) {
+            let newMaxArmor = parseInt(values.armor_equipped) || 0;
+            let oldMaxArmor = parseInt(values.max_armor) || 0;
+            let currentArmor = parseInt(values.current_armor) || 0;
+            
+            let updates = {
+                "max_armor": newMaxArmor
+            };
+            
+            // If max armor increased, add the difference to current armor
+            if (newMaxArmor > oldMaxArmor) {
+                updates["current_armor"] = currentArmor + (newMaxArmor - oldMaxArmor);
+            }
+            // If max armor decreased, cap current armor at new max
+            else if (currentArmor > newMaxArmor) {
+                updates["current_armor"] = newMaxArmor;
+            }
+            
+            setAttrs(updates);
+        });
+    });
+
+    // Calculate max shield based on equipment
+    on("change:shield_equipped sheet:opened", function() {
+        getAttrs(["shield_equipped", "current_shield", "max_shield"], function(values) {
+            let newMaxShield = parseInt(values.shield_equipped) || 0;
+            let oldMaxShield = parseInt(values.max_shield) || 0;
+            let currentShield = parseInt(values.current_shield) || 0;
+            
+            let updates = {
+                "max_shield": newMaxShield
+            };
+            
+            // If max shield increased, add the difference to current shield
+            if (newMaxShield > oldMaxShield) {
+                updates["current_shield"] = currentShield + (newMaxShield - oldMaxShield);
+            }
+            // If max shield decreased, cap current shield at new max
+            else if (currentShield > newMaxShield) {
+                updates["current_shield"] = newMaxShield;
+            }
+            
+            setAttrs(updates);
+        });
+    });
+
+    // Calculate max magic resistance based on equipment
+    on("change:magic_resistance sheet:opened", function() {
+        getAttrs(["magic_resistance", "current_magic_resistance", "max_magic_resistance"], function(values) {
+            let newMaxMagic = parseInt(values.magic_resistance) || 0;
+            let oldMaxMagic = parseInt(values.max_magic_resistance) || 0;
+            let currentMagic = parseInt(values.current_magic_resistance) || 0;
+            
+            let updates = {
+                "max_magic_resistance": newMaxMagic
+            };
+            
+            // If max magic increased, add the difference to current magic
+            if (newMaxMagic > oldMaxMagic) {
+                updates["current_magic_resistance"] = currentMagic + (newMaxMagic - oldMaxMagic);
+            }
+            // If max magic decreased, cap current magic at new max
+            else if (currentMagic > newMaxMagic) {
+                updates["current_magic_resistance"] = newMaxMagic;
+            }
+            
+            setAttrs(updates);
+        });
+    });
+
+    // Handle armor spending
+    on("change:armor_spent", function() {
+        getAttrs(["armor_spent", "current_armor"], function(values) {
+            let armorSpent = parseInt(values.armor_spent) || 0;
+            let currentArmor = parseInt(values.current_armor) || 0;
+            
+            // Prevent spending more than available
+            if (armorSpent > currentArmor) {
+                armorSpent = currentArmor;
+            }
+            
+            // Prevent negative values
+            if (armorSpent < 0) {
+                armorSpent = 0;
+            }
+            
+            let newCurrentArmor = currentArmor - armorSpent;
+            
+            setAttrs({
+                "current_armor": newCurrentArmor,
+                "armor_spent": 0  // Reset spent after applying
+            });
+        });
+    });
+
+    // Handle shield spending
+    on("change:shield_spent", function() {
+        getAttrs(["shield_spent", "current_shield"], function(values) {
+            let shieldSpent = parseInt(values.shield_spent) || 0;
+            let currentShield = parseInt(values.current_shield) || 0;
+            
+            // Prevent spending more than available
+            if (shieldSpent > currentShield) {
+                shieldSpent = currentShield;
+            }
+            
+            // Prevent negative values
+            if (shieldSpent < 0) {
+                shieldSpent = 0;
+            }
+            
+            let newCurrentShield = currentShield - shieldSpent;
+            
+            setAttrs({
+                "current_shield": newCurrentShield,
+                "shield_spent": 0  // Reset spent after applying
+            });
+        });
+    });
+
+    // Handle magic resistance spending
+    on("change:magic_resistance_spent", function() {
+        getAttrs(["magic_resistance_spent", "current_magic_resistance"], function(values) {
+            let magicSpent = parseInt(values.magic_resistance_spent) || 0;
+            let currentMagic = parseInt(values.current_magic_resistance) || 0;
+            
+            // Prevent spending more than available
+            if (magicSpent > currentMagic) {
+                magicSpent = currentMagic;
+            }
+            
+            // Prevent negative values
+            if (magicSpent < 0) {
+                magicSpent = 0;
+            }
+            
+            let newCurrentMagic = currentMagic - magicSpent;
+            
+            setAttrs({
+                "current_magic_resistance": newCurrentMagic,
+                "magic_resistance_spent": 0  // Reset spent after applying
+            });
         });
     });
 
