@@ -4,7 +4,7 @@
 <input type="hidden" name="attr_global_dmg" value="0">
 <input type="hidden" name="attr_global_arm" value="0">
 <input type="hidden" name="attr_global_ongoing" value="0">
-<input type="hidden" name="attr_equipment_dmg" value="10">
+<input type="hidden" name="attr_equipment_dmg" value="0">
 <input type="hidden" name="attr_equipment_armor" value="0">
 <input type="hidden" name="attr_equipment_armormod" value="0">
 <input type="hidden" name="attr_equipment_totalarmor" value="0">
@@ -98,6 +98,7 @@
 <div>
     <span>STR MOD CURRENT</span>
     <span name="attr_str_mod_current"></span>
+    <button type="roll" value="/roll 2d6 + @{str_mod_current}" name="roll_strCheck">Roll Str</button>
 </div>
 
 <div>
