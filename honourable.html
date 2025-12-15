@@ -99,82 +99,29 @@
 <input type="hidden" name="attr_cha_wound_total" value="0">
 
 <!-- Sheet start -->
-<!-- STATS DISPLAY -->
-<div>
-    <span>STR</span>
-    <input type="number" name="attr_str"></input>
-    <span name="attr_str_mod"></span>
-    <span>Current:</span>
-    <span name="attr_str_mod_current"></span>
-    <button type="roll" value="/roll 2d6 + @{str_mod_current}" name="roll_strCheck">Roll</button>
-</div>
-
-<div>
-    <span>DEX</span>
-    <input type="number" name="attr_dex"></input>
-    <span name="attr_dex_mod"></span>
-    <span>Current:</span>
-    <span name="attr_dex_mod_current"></span>
-    <button type="roll" value="/roll 2d6 + @{dex_mod_current}" name="roll_dexCheck">Roll</button>
-</div>
-
-<div>
-    <span>CON</span>
-    <input type="number" name="attr_con"></input>
-    <span name="attr_con_mod"></span>
-    <span>Current:</span>
-    <span name="attr_con_mod_current"></span>
-    <button type="roll" value="/roll 2d6 + @{con_mod_current}" name="roll_conCheck">Roll</button>
-</div>
-
-<div>
-    <span>INT</span>
-    <input type="number" name="attr_int"></input>
-    <span name="attr_int_mod"></span>
-    <span>Current:</span>
-    <span name="attr_int_mod_current"></span>
-    <button type="roll" value="/roll 2d6 + @{int_mod_current}" name="roll_intCheck">Roll</button>
-</div>
-
-<div>
-    <span>WIS</span>
-    <input type="number" name="attr_wis"></input>
-    <span name="attr_wis_mod"></span>
-    <span>Current:</span>
-    <span name="attr_wis_mod_current"></span>
-    <button type="roll" value="/roll 2d6 + @{wis_mod_current}" name="roll_wisCheck">Roll</button>
-</div>
-
-<div>
-    <span>CHA</span>
-    <input type="number" name="attr_cha"></input>
-    <span name="attr_cha_mod"></span>
-    <span>Current:</span>
-    <span name="attr_cha_mod_current"></span>
-    <button type="roll" value="/roll 2d6 + @{cha_mod_current}" name="roll_chaCheck">Roll</button>
-</div>
+<div class="charsheet">
 
 <!-- ROLLABLE ATTRIBUTES SECTION -->
-<div>
-	<span>ROLLABLE ATTRIBUTES</span>
-</div>
-<div>
-	<button type="roll" name="roll_str_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=STR (Modified)}} {{result=[[@{rolltype} + @{str_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">STR <span name="attr_str_mod_current"></span></button>
-	<button type="roll" name="roll_dex_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=DEX (Modified)}} {{result=[[@{rolltype} + @{dex_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">DEX</button>
-	<button type="roll" name="roll_con_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=CON (Modified)}} {{result=[[@{rolltype} + @{con_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">CON</button>
-	<button type="roll" name="roll_int_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=INT (Modified)}} {{result=[[@{rolltype} + @{int_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">INT</button>
-	<button type="roll" name="roll_wis_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=WIS (Modified)}} {{result=[[@{rolltype} + @{wis_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">WIS</button>
-	<button type="roll" name="roll_cha_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=CHA (Modified)}} {{result=[[@{rolltype} + @{cha_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">CHA</button>
-</div>
-<div>
-	<button type="roll" name="roll_defy_danger" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Defy Danger}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">Defy Danger</button>
-	<button type="roll" name="roll_resistance" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Resistance}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">Resistance</button>
-</div>
-<div>
-	<label>Advantage/Disadvantage:</label>
-	<input type="radio" name="attr_advantage_state" value="advantage"> Advantage
-	<input type="radio" name="attr_advantage_state" value="normal" checked="checked"> Normal
-	<input type="radio" name="attr_advantage_state" value="disadvantage"> Disadvantage
+<div class="sheet-section rollable-attributes">
+	<h2 class="sheet-section-header">ROLLABLE ATTRIBUTES</h2>
+	<div class="sheet-button-row">
+		<button type="roll" class="sheet-stat-button" name="roll_str_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=STR (Modified)}} {{result=[[@{rolltype} + @{str_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">STR <span name="attr_str_mod_current"></span></button>
+		<button type="roll" class="sheet-stat-button" name="roll_dex_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=DEX (Modified)}} {{result=[[@{rolltype} + @{dex_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">DEX <span name="attr_dex_mod_current"></span></button>
+		<button type="roll" class="sheet-stat-button" name="roll_con_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=CON (Modified)}} {{result=[[@{rolltype} + @{con_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">CON <span name="attr_con_mod_current"></span></button>
+		<button type="roll" class="sheet-stat-button" name="roll_int_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=INT (Modified)}} {{result=[[@{rolltype} + @{int_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">INT <span name="attr_int_mod_current"></span></button>
+		<button type="roll" class="sheet-stat-button" name="roll_wis_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=WIS (Modified)}} {{result=[[@{rolltype} + @{wis_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">WIS <span name="attr_wis_mod_current"></span></button>
+		<button type="roll" class="sheet-stat-button" name="roll_cha_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=CHA (Modified)}} {{result=[[@{rolltype} + @{cha_mod_current} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">CHA <span name="attr_cha_mod_current"></span></button>
+	</div>
+	<div class="sheet-button-row">
+		<button type="roll" class="sheet-action-button" name="roll_defy_danger" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Defy Danger}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">Defy Danger</button>
+		<button type="roll" class="sheet-action-button" name="roll_resistance" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Resistance}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward})[forward] + @{global_ongoing}[global ongoing]]]}}">Resistance</button>
+	</div>
+	<div class="sheet-advantage-group">
+		<label>Advantage/Disadvantage:</label>
+		<input type="radio" name="attr_advantage_state" value="advantage"> Advantage
+		<input type="radio" name="attr_advantage_state" value="normal" checked="checked"> Normal
+		<input type="radio" name="attr_advantage_state" value="disadvantage"> Disadvantage
+	</div>
 </div>
 
 <!-- CONDITIONS AND DAMAGE TRACKING -->
@@ -213,6 +160,12 @@
 					<option value="1">Stale</option>
 					<option value="2">Fresh</option>
 				</select>
+				<div class="condition-resistance">
+					<span class="resistance-label">RES:</span>
+					<input type="number" class="resistance-input" name="attr_str_resistance_current" min="0" />
+					<span class="resistance-divider">/</span>
+					<span class="resistance-max" name="attr_str_resistance_max"></span>
+				</div>
 			</div>
 			<div class="condition-row">
 				<label class="condition-name">Hobbled (DEX):</label>
@@ -236,6 +189,12 @@
 					<option value="1">Stale</option>
 					<option value="2">Fresh</option>
 				</select>
+				<div class="condition-resistance">
+					<span class="resistance-label">RES:</span>
+					<input type="number" class="resistance-input" name="attr_dex_resistance_current" min="0" />
+					<span class="resistance-divider">/</span>
+					<span class="resistance-max" name="attr_dex_resistance_max"></span>
+				</div>
 			</div>
 			<div class="condition-row">
 				<label class="condition-name">Exhausted (CON):</label>
@@ -259,6 +218,12 @@
 					<option value="1">Stale</option>
 					<option value="2">Fresh</option>
 				</select>
+				<div class="condition-resistance">
+					<span class="resistance-label">RES:</span>
+					<input type="number" class="resistance-input" name="attr_con_resistance_current" min="0" />
+					<span class="resistance-divider">/</span>
+					<span class="resistance-max" name="attr_con_resistance_max"></span>
+				</div>
 			</div>
 		</div>
 		<div class="condition-category mental">
@@ -285,6 +250,12 @@
 					<option value="1">Stale</option>
 					<option value="2">Fresh</option>
 				</select>
+				<div class="condition-resistance">
+					<span class="resistance-label">RES:</span>
+					<input type="number" class="resistance-input" name="attr_int_resistance_current" min="0" />
+					<span class="resistance-divider">/</span>
+					<span class="resistance-max" name="attr_int_resistance_max"></span>
+				</div>
 			</div>
 			<div class="condition-row">
 				<label class="condition-name">Agitated (WIS):</label>
@@ -308,6 +279,12 @@
 					<option value="1">Stale</option>
 					<option value="2">Fresh</option>
 				</select>
+				<div class="condition-resistance">
+					<span class="resistance-label">RES:</span>
+					<input type="number" class="resistance-input" name="attr_wis_resistance_current" min="0" />
+					<span class="resistance-divider">/</span>
+					<span class="resistance-max" name="attr_wis_resistance_max"></span>
+				</div>
 			</div>
 			<div class="condition-row">
 				<label class="condition-name">Shamed (CHA):</label>
@@ -331,71 +308,117 @@
 					<option value="1">Stale</option>
 					<option value="2">Fresh</option>
 				</select>
+				<div class="condition-resistance">
+					<span class="resistance-label">RES:</span>
+					<input type="number" class="resistance-input" name="attr_cha_resistance_current" min="0" />
+					<span class="resistance-divider">/</span>
+					<span class="resistance-max" name="attr_cha_resistance_max"></span>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="resistance-section">
-		<div class="resistance-stats">
-			<div class="resistance-item">
-				<label>RES to Spend (Max):</label>
-				<input type="number" name="attr_resistance_max" value="0">
-			</div>
-			<div class="resistance-item">
-				<label>Current RES:</label>
-				<input type="number" name="attr_resistance_current" value="0">
-			</div>
-			<div class="resistance-item">
-				<label>Resistance Modifier:</label>
-				<input type="number" name="attr_resistance_mod" value="0" disabled="true">
-			</div>
+
+</div>
+<!-- STATS DISPLAY -->
+<div class="sheet-section stats-display">
+	<h2 class="sheet-section-header">BASE STATS</h2>
+	<div class="sheet-stat-grid">
+		<div class="sheet-stat-row">
+		    <span class="sheet-stat-label">STR</span>
+		    <input type="number" class="sheet-stat-input" name="attr_str"></input>
+		    <span class="sheet-stat-mod" name="attr_str_mod"></span>
+		    <span class="sheet-stat-current-label">Current:</span>
+		    <span class="sheet-stat-current" name="attr_str_mod_current"></span>
+		    <button type="roll" class="sheet-roll-button" value="/roll 2d6 + @{str_mod_current}" name="roll_strCheck">Roll</button>
+		</div>
+		<div class="sheet-stat-row">
+		    <span class="sheet-stat-label">DEX</span>
+		    <input type="number" class="sheet-stat-input" name="attr_dex"></input>
+		    <span class="sheet-stat-mod" name="attr_dex_mod"></span>
+		    <span class="sheet-stat-current-label">Current:</span>
+		    <span class="sheet-stat-current" name="attr_dex_mod_current"></span>
+		    <button type="roll" class="sheet-roll-button" value="/roll 2d6 + @{dex_mod_current}" name="roll_dexCheck">Roll</button>
+		</div>
+		<div class="sheet-stat-row">
+		    <span class="sheet-stat-label">CON</span>
+		    <input type="number" class="sheet-stat-input" name="attr_con"></input>
+		    <span class="sheet-stat-mod" name="attr_con_mod"></span>
+		    <span class="sheet-stat-current-label">Current:</span>
+		    <span class="sheet-stat-current" name="attr_con_mod_current"></span>
+		    <button type="roll" class="sheet-roll-button" value="/roll 2d6 + @{con_mod_current}" name="roll_conCheck">Roll</button>
+		</div>
+		<div class="sheet-stat-row">
+		    <span class="sheet-stat-label">INT</span>
+		    <input type="number" class="sheet-stat-input" name="attr_int"></input>
+		    <span class="sheet-stat-mod" name="attr_int_mod"></span>
+		    <span class="sheet-stat-current-label">Current:</span>
+		    <span class="sheet-stat-current" name="attr_int_mod_current"></span>
+		    <button type="roll" class="sheet-roll-button" value="/roll 2d6 + @{int_mod_current}" name="roll_intCheck">Roll</button>
+		</div>
+		<div class="sheet-stat-row">
+		    <span class="sheet-stat-label">WIS</span>
+		    <input type="number" class="sheet-stat-input" name="attr_wis"></input>
+		    <span class="sheet-stat-mod" name="attr_wis_mod"></span>
+		    <span class="sheet-stat-current-label">Current:</span>
+		    <span class="sheet-stat-current" name="attr_wis_mod_current"></span>
+		    <button type="roll" class="sheet-roll-button" value="/roll 2d6 + @{wis_mod_current}" name="roll_wisCheck">Roll</button>
+		</div>
+		<div class="sheet-stat-row">
+		    <span class="sheet-stat-label">CHA</span>
+		    <input type="number" class="sheet-stat-input" name="attr_cha"></input>
+		    <span class="sheet-stat-mod" name="attr_cha_mod"></span>
+		    <span class="sheet-stat-current-label">Current:</span>
+		    <span class="sheet-stat-current" name="attr_cha_mod_current"></span>
+		    <button type="roll" class="sheet-roll-button" value="/roll 2d6 + @{cha_mod_current}" name="roll_chaCheck">Roll</button>
 		</div>
 	</div>
 </div>
 
-<div class="armor">
-    <div>
-        <span>Armor Type:</span>
-        <select name="attr_armor_equipped">
+<div class="sheet-section armor-section">
+	<h2 class="sheet-section-header">ARMOR & PROTECTION</h2>
+    <div class="sheet-armor-row">
+        <span class="sheet-armor-label">Armor Type:</span>
+        <select class="sheet-armor-select" name="attr_armor_equipped">
             <option value="0">No Armor</option>
             <option value="1">Padded/Leather</option>
             <option value="2">Mail/Scale</option>
             <option value="3">Plated (Munition)</option>
             <option value="4">Full Plate</option>
         </select>
-        <span>Max:</span>
-        <span name="attr_max_armor"></span>
-        <span>Remaining:</span>
-        <input type="number" name="attr_current_armor" min="0" max="@{max_armor}" />
+        <span class="sheet-armor-stat">Max:</span>
+        <span class="sheet-armor-value" name="attr_max_armor"></span>
+        <span class="sheet-armor-stat">Remaining:</span>
+        <input type="number" class="sheet-armor-input" name="attr_current_armor" min="0" max="@{max_armor}" />
     </div>
-    <br>
-    <div>
-        <span>Shield:</span>
-        <select name="attr_shield_equipped">
+    <div class="sheet-armor-row">
+        <span class="sheet-armor-label">Shield:</span>
+        <select class="sheet-armor-select" name="attr_shield_equipped">
             <option value="0">No Shield</option>
             <option value="1">Wooden Shield</option>
             <option value="2">Metal Shield</option>
         </select>
-        <span>Max:</span>
-        <span name="attr_max_shield"></span>
-        <span>Remaining:</span>
-        <input type="number" name="attr_current_shield" min="0" max="@{max_shield}" />
+        <span class="sheet-armor-stat">Max:</span>
+        <span class="sheet-armor-value" name="attr_max_shield"></span>
+        <span class="sheet-armor-stat">Remaining:</span>
+        <input type="number" class="sheet-armor-input" name="attr_current_shield" min="0" max="@{max_shield}" />
     </div>
-    <br>
-    <div>
-        <span>Magic Resistance:</span>
-        <select name="attr_magic_resistance">
+    <div class="sheet-armor-row">
+        <span class="sheet-armor-label">Magic Resistance:</span>
+        <select class="sheet-armor-select" name="attr_magic_resistance">
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
         </select>
-        <span>Max:</span>
-        <span name="attr_max_magic_resistance"></span>
-        <span>Remaining:</span>
-        <input type="number" name="attr_current_magic_resistance" min="0" max="@{max_magic_resistance}" />
+        <span class="sheet-armor-stat">Max:</span>
+        <span class="sheet-armor-value" name="attr_max_magic_resistance"></span>
+        <span class="sheet-armor-stat">Remaining:</span>
+        <input type="number" class="sheet-armor-input" name="attr_current_magic_resistance" min="0" max="@{max_magic_resistance}" />
     </div>
 </div>
+
+</div><!-- End charsheet -->
 
 <script type="text/worker">
     on("change:str change:dex change:con change:int change:wis change:cha change:str_wound_minor change:str_wound_moderate change:str_wound_severe change:str_wound_terminal change:dex_wound_minor change:dex_wound_moderate change:dex_wound_severe change:dex_wound_terminal change:con_wound_minor change:con_wound_moderate change:con_wound_severe change:con_wound_terminal change:int_wound_minor change:int_wound_moderate change:int_wound_severe change:int_wound_terminal change:wis_wound_minor change:wis_wound_moderate change:wis_wound_severe change:wis_wound_terminal change:cha_wound_minor change:cha_wound_moderate change:cha_wound_severe change:cha_wound_terminal sheet:opened", function(val) {
@@ -413,6 +436,9 @@
                 let value = parseInt(values[stat]) || 0;
                 let mod = getModifier(value);
                 updates[`${stat}_mod`] = mod;
+                
+                // Set resistance max to unmodified stat mod
+                updates[`${stat}_resistance_max`] = mod;
                 
                 // Calculate injury modifier
                 let injuryMod = 0;
