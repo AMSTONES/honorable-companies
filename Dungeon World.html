@@ -227,37 +227,37 @@
 	</div>
 	<div class="attributes-grid">
 		<div class="attribute-item">
-			<button type="roll" name="roll_str_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=STR (Modified)}} {{result=[[@{rolltype} + @{str_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
+			<button type="roll" name="roll_str_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=STR (Modified)}} {{result=[[@{rolltype} + @{str_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}} {{advantage_label=@{advantage_label}}} {{forward_label=@{forward_label}}}">
 				<span class="attr-label">STR</span>
 				<span name="attr_str_mod_current"></span>
 			</button>
 		</div>
 		<div class="attribute-item">
-			<button type="roll" name="roll_dex_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=DEX (Modified)}} {{result=[[@{rolltype} + @{dex_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
+			<button type="roll" name="roll_dex_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=DEX (Modified)}} {{result=[[@{rolltype} + @{dex_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}} {{advantage_label=@{advantage_label}}} {{forward_label=@{forward_label}}}">
 				<span class="attr-label">DEX</span>
 				<span name="attr_dex_mod_current"></span>
 			</button>
 		</div>
 		<div class="attribute-item">
-			<button type="roll" name="roll_con_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=CON (Modified)}} {{result=[[@{rolltype} + @{con_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
+			<button type="roll" name="roll_con_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=CON (Modified)}} {{result=[[@{rolltype} + @{con_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}} {{advantage_label=@{advantage_label}}} {{forward_label=@{forward_label}}}">
 				<span class="attr-label">CON</span>
 				<span name="attr_con_mod_current"></span>
 			</button>
 		</div>
 		<div class="attribute-item">
-			<button type="roll" name="roll_int_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=INT (Modified)}} {{result=[[@{rolltype} + @{int_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
+			<button type="roll" name="roll_int_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=INT (Modified)}} {{result=[[@{rolltype} + @{int_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}} {{advantage_label=@{advantage_label}}} {{forward_label=@{forward_label}}}">
 				<span class="attr-label">INT</span>
 				<span name="attr_int_mod_current"></span>
 			</button>
 		</div>
 		<div class="attribute-item">
-			<button type="roll" name="roll_wis_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=WIS (Modified)}} {{result=[[@{rolltype} + @{wis_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
+			<button type="roll" name="roll_wis_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=WIS (Modified)}} {{result=[[@{rolltype} + @{wis_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}} {{advantage_label=@{advantage_label}}} {{forward_label=@{forward_label}}}">
 				<span class="attr-label">WIS</span>
 				<span name="attr_wis_mod_current"></span>
 			</button>
 		</div>
 		<div class="attribute-item">
-			<button type="roll" name="roll_cha_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=CHA (Modified)}} {{result=[[@{rolltype} + @{cha_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
+			<button type="roll" name="roll_cha_modified" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=CHA (Modified)}} {{result=[[@{rolltype} + @{cha_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}} {{advantage_label=@{advantage_label}}} {{forward_label=@{forward_label}}}">
 				<span class="attr-label">CHA</span>
 				<span name="attr_cha_mod_current"></span>
 			</button>
@@ -265,12 +265,12 @@
 	</div>
 	<div class="utility-rolls">
 		<div class="skill-item">
-			<button type="roll" name="roll_defy_danger" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Defy Danger}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
+			<button type="roll" name="roll_defy_danger" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Defy Danger}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}} {{advantage_label=@{advantage_label}}} {{forward_label=@{forward_label}}}">
 				Defy Danger
 			</button>
 		</div>
 		<div class="skill-item">
-			<button type="roll" name="roll_resistance" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Resistance}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
+			<button type="roll" name="roll_resistance" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Resistance}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}} {{advantage_label=@{advantage_label}}} {{forward_label=@{forward_label}}}">
 				Resistance
 			</button>
 		</div>
@@ -297,219 +297,225 @@
 		</div>
 	</div>
 	<div class="conditions-grid">
-		<div class="condition-header">PHYSICAL CONDITIONS</div>
-		<div class="condition-category physical">
-			<div class="condition-row">
-				<label class="condition-name">Wounded (STR):</label>
-				<div class="wound-selects">
-					<label>Minor:</label>
-					<select name="attr_str_wound_minor">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Moderate:</label>
-					<select name="attr_str_wound_moderate">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Severe:</label>
-					<select name="attr_str_wound_severe">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Terminal:</label>
-					<select name="attr_str_wound_terminal">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
+		<div class="condition-wrapper">
+			<div class="condition-header">PHYSICAL CONDITIONS</div>
+			<div class="condition-category physical">
+				<div class="condition-row">
+					<label class="condition-name">Wounded (STR):</label>
+					<div class="wound-selects">
+						<label>Minor:</label>
+						<select name="attr_str_wound_minor">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Moderate:</label>
+						<select name="attr_str_wound_moderate">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Severe:</label>
+						<select name="attr_str_wound_severe">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Terminal:</label>
+						<select name="attr_str_wound_terminal">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+					</div>
+					<div class="condition-resistance">
+						<span class="resistance-label">RES:</span>
+						<input type="number" class="resistance-input" name="attr_str_resistance_current" min="0" />
+						<span class="resistance-divider">/</span>
+						<span class="resistance-max" name="attr_str_resistance_max"></span>
+					</div>
 				</div>
-				<div class="condition-resistance">
-					<span class="resistance-label">RES:</span>
-					<input type="number" class="resistance-input" name="attr_str_resistance_current" min="0" />
-					<span class="resistance-divider">/</span>
-					<span class="resistance-max" name="attr_str_resistance_max"></span>
+				<div class="condition-row">
+					<label class="condition-name">Hobbled (DEX):</label>
+					<div class="wound-selects">
+						<label>Minor:</label>
+						<select name="attr_dex_wound_minor">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Moderate:</label>
+						<select name="attr_dex_wound_moderate">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Severe:</label>
+						<select name="attr_dex_wound_severe">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Terminal:</label>
+						<select name="attr_dex_wound_terminal">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+					</div>
+					<div class="condition-resistance">
+						<span class="resistance-label">RES:</span>
+						<input type="number" class="resistance-input" name="attr_dex_resistance_current" min="0" />
+						<span class="resistance-divider">/</span>
+						<span class="resistance-max" name="attr_dex_resistance_max"></span>
+					</div>
 				</div>
-			</div>
-			<div class="condition-row">
-				<label class="condition-name">Hobbled (DEX):</label>
-				<div class="wound-selects">
-					<label>Minor:</label>
-					<select name="attr_dex_wound_minor">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Moderate:</label>
-					<select name="attr_dex_wound_moderate">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Severe:</label>
-					<select name="attr_dex_wound_severe">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Terminal:</label>
-					<select name="attr_dex_wound_terminal">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-				</div>
-				<div class="condition-resistance">
-					<span class="resistance-label">RES:</span>
-					<input type="number" class="resistance-input" name="attr_dex_resistance_current" min="0" />
-					<span class="resistance-divider">/</span>
-					<span class="resistance-max" name="attr_dex_resistance_max"></span>
-				</div>
-			</div>
-			<div class="condition-row">
-				<label class="condition-name">Exhausted (CON):</label>
-				<div class="wound-selects">
-					<label>Minor:</label>
-					<select name="attr_con_wound_minor">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Moderate:</label>
-					<select name="attr_con_wound_moderate">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Severe:</label>
-					<select name="attr_con_wound_severe">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Terminal:</label>
-					<select name="attr_con_wound_terminal">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-				</div>
-				<div class="condition-resistance">
-					<span class="resistance-label">RES:</span>
-					<input type="number" class="resistance-input" name="attr_con_resistance_current" min="0" />
-					<span class="resistance-divider">/</span>
-					<span class="resistance-max" name="attr_con_resistance_max"></span>
+				<div class="condition-row">
+					<label class="condition-name">Exhausted (CON):</label>
+					<div class="wound-selects">
+						<label>Minor:</label>
+						<select name="attr_con_wound_minor">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Moderate:</label>
+						<select name="attr_con_wound_moderate">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Severe:</label>
+						<select name="attr_con_wound_severe">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Terminal:</label>
+						<select name="attr_con_wound_terminal">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+					</div>
+					<div class="condition-resistance">
+						<span class="resistance-label">RES:</span>
+						<input type="number" class="resistance-input" name="attr_con_resistance_current" min="0" />
+						<span class="resistance-divider">/</span>
+						<span class="resistance-max" name="attr_con_resistance_max"></span>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="condition-header">MENTAL CONDITIONS</div>
-		<div class="condition-category mental">
-			<div class="condition-row">
-				<label class="condition-name">Panicked (INT):</label>
-				<div class="wound-selects">
-					<label>Minor:</label>
-					<select name="attr_int_wound_minor">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Moderate:</label>
-					<select name="attr_int_wound_moderate">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Severe:</label>
-					<select name="attr_int_wound_severe">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Terminal:</label>
-					<select name="attr_int_wound_terminal">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
+
+		<div class="condition-wrapper">
+
+			<div class="condition-header">MENTAL CONDITIONS</div>
+			<div class="condition-category mental">
+				<div class="condition-row">
+					<label class="condition-name">Panicked (INT):</label>
+					<div class="wound-selects">
+						<label>Minor:</label>
+						<select name="attr_int_wound_minor">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Moderate:</label>
+						<select name="attr_int_wound_moderate">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Severe:</label>
+						<select name="attr_int_wound_severe">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Terminal:</label>
+						<select name="attr_int_wound_terminal">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+					</div>
+					<div class="condition-resistance">
+						<span class="resistance-label">RES:</span>
+						<input type="number" class="resistance-input" name="attr_int_resistance_current" min="0" />
+						<span class="resistance-divider">/</span>
+						<span class="resistance-max" name="attr_int_resistance_max"></span>
+					</div>
 				</div>
-				<div class="condition-resistance">
-					<span class="resistance-label">RES:</span>
-					<input type="number" class="resistance-input" name="attr_int_resistance_current" min="0" />
-					<span class="resistance-divider">/</span>
-					<span class="resistance-max" name="attr_int_resistance_max"></span>
+				<div class="condition-row">
+					<label class="condition-name">Agitated (WIS):</label>
+					<div class="wound-selects">
+						<label>Minor:</label>
+						<select name="attr_wis_wound_minor">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Moderate:</label>
+						<select name="attr_wis_wound_moderate">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Severe:</label>
+						<select name="attr_wis_wound_severe">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Terminal:</label>
+						<select name="attr_wis_wound_terminal">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+					</div>
+					<div class="condition-resistance">
+						<span class="resistance-label">RES:</span>
+						<input type="number" class="resistance-input" name="attr_wis_resistance_current" min="0" />
+						<span class="resistance-divider">/</span>
+						<span class="resistance-max" name="attr_wis_resistance_max"></span>
+					</div>
 				</div>
-			</div>
-			<div class="condition-row">
-				<label class="condition-name">Agitated (WIS):</label>
-				<div class="wound-selects">
-					<label>Minor:</label>
-					<select name="attr_wis_wound_minor">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Moderate:</label>
-					<select name="attr_wis_wound_moderate">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Severe:</label>
-					<select name="attr_wis_wound_severe">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Terminal:</label>
-					<select name="attr_wis_wound_terminal">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-				</div>
-				<div class="condition-resistance">
-					<span class="resistance-label">RES:</span>
-					<input type="number" class="resistance-input" name="attr_wis_resistance_current" min="0" />
-					<span class="resistance-divider">/</span>
-					<span class="resistance-max" name="attr_wis_resistance_max"></span>
-				</div>
-			</div>
-			<div class="condition-row">
-				<label class="condition-name">Shamed (CHA):</label>
-				<div class="wound-selects">
-					<label>Minor:</label>
-					<select name="attr_cha_wound_minor">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Moderate:</label>
-					<select name="attr_cha_wound_moderate">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Severe:</label>
-					<select name="attr_cha_wound_severe">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-					<label>Terminal:</label>
-					<select name="attr_cha_wound_terminal">
-						<option value="none">None</option>
-						<option value="healing">Healing</option>
-						<option value="fresh">Fresh</option>
-					</select>
-				</div>
-				<div class="condition-resistance">
-					<span class="resistance-label">RES:</span>
-					<input type="number" class="resistance-input" name="attr_cha_resistance_current" min="0" />
-					<span class="resistance-divider">/</span>
-					<span class="resistance-max" name="attr_cha_resistance_max"></span>
+				<div class="condition-row">
+					<label class="condition-name">Shamed (CHA):</label>
+					<div class="wound-selects">
+						<label>Minor:</label>
+						<select name="attr_cha_wound_minor">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Moderate:</label>
+						<select name="attr_cha_wound_moderate">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Severe:</label>
+						<select name="attr_cha_wound_severe">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+						<label>Terminal:</label>
+						<select name="attr_cha_wound_terminal">
+							<option value="none">None</option>
+							<option value="healing">Healing</option>
+							<option value="fresh">Fresh</option>
+						</select>
+					</div>
+					<div class="condition-resistance">
+						<span class="resistance-label">RES:</span>
+						<input type="number" class="resistance-input" name="attr_cha_resistance_current" min="0" />
+						<span class="resistance-divider">/</span>
+						<span class="resistance-max" name="attr_cha_resistance_max"></span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -558,7 +564,7 @@
 					<option value="4">Terminal</option>
 				</select>
 				<input type="text" name="attr_weapon_notes" placeholder="Weapon properties...">
-				<button type="roll" name="roll_weapon_attack" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=@{weapon_name} Attack}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
+				<button type="roll" name="roll_weapon_attack" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=@{weapon_name} Attack}} {{result=[[@{rolltype} + @{statmod_query} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}} {{advantage_label=@{advantage_label}}} {{forward_label=@{forward_label}}}">
 					Attack
 				</button>
 			</div>
@@ -583,78 +589,13 @@
 				</div>
 			</fieldset>
 		</div>
-		<div class="mid-header">
-			<span class="label" data-i18n="race-u">RACE</span>
-		</div>
-		<div class="mid-content race">
-			<div class="race-main">
-				<input type="text" name="attr_race" />
-                <textarea name="attr_race_details" style="height:50px;"></textarea>
-			</div>
-		</div>
-		<div class="mid-header">
-			<span class="label" data-i18n="global-modifiers-u">GLOBAL MODIFIERS</span>
-		</div>
-		<div class="mid-content gmod">
-			<fieldset class="repeating_gmods">
-				<div class="global-mods-main">
-					<input class="enable-mod" type="checkbox" name="attr_enable_modifier" value="1">
-					<input type="text" name="attr_gmod_name" />
-					<input class="expander expand-gmod" type="checkbox" name="attr_expand_gmod" value="1" checked="checked" />
-					<span> </span>
-					<div class="gmod-expansion">
-						<div class="flex-row flex-left">
-							<input class="enable-mod" type="checkbox" name="attr_ongoing_on" value="1" />
-							<span>
-								<span class="label" data-i18n="ongoing-roll-mod:">Ongoing Roll Modifier: </span>
-								<input type="number" name="attr_gmod_ongoing_mod" value="0" />
-							</span>
-						</div>
-                          <div class="flex-row flex-left">
-							<input class="enable-mod" type="checkbox" name="attr_barbdice_on" value="1" />
-							<span>
-								<span class="label" data-i18n="roll1d61d8formoves">Roll 1d6+1d8 for Moves </span>
-							</span>
-						</div>
-						<div class="flex-row flex-left">
-							<input class="enable-mod" type="checkbox" name="attr_dmg_on" value="1" />
-							<span>
-								<span class="label" data-i18n="damage-mod:">Damage Mod:</span>
-								<input type="number" name="attr_gmod_dmg_diecount" value="0" />
-								<select class="gmod-die" name="attr_gmod_dmg_die">
-									<option value="d0" selected="selected">--</option>
-									<option value="d4">d4</option>
-									<option value="d6">d6</option>
-									<option value="d8">d8</option>
-									<option value="d10">d10</option>
-									<option value="d12">d12</option>
-									<option value="d20">d20</option>
-								</select>
-								<span> +</span>
-								<input type="number" name="attr_gmod_dmg_mod" value="0" />
-							</span>
-						</div>
-						<div class="flex-row flex-left">
-							<input class="enable-mod" type="checkbox" name="attr_arm_on" value="1" />
-							<span>
-								<span class="label" data-i18n="armor-modifier:">Armor Modifier: +</span>
-								<input type="number" name="attr_gmod_arm_mod" value="0" />
-							</span>
-						</div>
-					</div>
-				</div>
-				<input type="hidden" name="attr_calc_ongoing" value="0" />
-				<input type="hidden" name="attr_calc_dmg" value="0" />
-				<input type="hidden" name="attr_calc_arm" value="0" />
-			</fieldset>
-		</div>
 	</div>
 </div>
 
 <div class="mid-container weapons-shields-container">
 	<div class="mid-module weapons-container">
 		<div class="mid-header">
-			<span class="label" data-i18n="weapons">WEAPONS</span>
+			<span class="label">WEAPONS</span>
 		</div>
 		<div class="mid-content weapons">
 			<fieldset class="repeating_weapons">
@@ -686,58 +627,6 @@
 	</div>
 </div>
 
-<div class="mid-container look-alignment-container">
-	<div class="mid-module look-container">
-		<div class="mid-header">
-			<button type="roll" name="roll_showlook" value="&{template:dwgeneral} {{charname=@{character_name}}} {{infoname=^{look}}} {{details=@{char_look}}}">
-			<span class="label" data-i18n="look-u">LOOK</span>
-			</button>
-		</div>
-		<div class="mid-content look">
-			<textarea name="attr_char_look"></textarea>
-		</div>
-	</div>
-	<!-- <div class="mid-module vitals-container">
-		<div class="vital mid-header armor-container">
-			<button type="roll" name="roll_showarmor" value="&{template:dwgeneral} {{charname=@{character_name}}} {{infoname=^{armor}}} {{details=[[@{armor}]]}}">
-			<span class="label" data-i18n="armor-u">ARMOR</span>
-			</button>
-			<input type="number" name="attr_armor" value="@{equipment_armor}+@{equipment_armormod}+@{global_arm}" disabled="true">
-		</div>
-		<div class="vital mid-header hp-container">
-			<button type="roll" name="roll_showhp" value="&{template:dwgeneral} {{charname=@{character_name}}} {{infoname=^{hitpoints}}} {{details=[[@{HP}]]&#47;[[@{HP|max}]]}}">
-			<span class="label" data-i18n="hitpoints-u">HIT POINTS</span>
-			</button>
-			<span class="heart"></span>
-			<input type="number" min="0" class="hitpoints" name="attr_HP" value="0">
-			<input type="number" min="0" class="max-hitpoints" name="attr_HP_max" value="0">
-		</div>
-		<div class="vital mid-header damage-container">
-			<button type="roll" name="roll_damage" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=^{classdamage}}} {{result=[[@{damagedie} + @{equipment_dmg} + @{global_dmg}]]}}">
-			<span class="label" data-i18n="damage-u">DAMAGE</span>
-			</button>
-			<select name="attr_damagedie">
-				<option value="d4" selected="selected">d4</option>
-				<option value="d8">d8</option>
-				<option value="d10">d10</option>
-				<option value="d12">d12</option>
-				<option value="d20">d20</option>
-			</select>
-		</div>
-	</div> -->
-	<div class="mid-module alignment-container">
-		<div class="mid-header">
-			<span class="label" data-i18n="alignment-u">ALIGNMENT</span>
-		</div>
-		<div class="mid-content alignment">
-			<input type="text" name="attr_alignment">
-			<textarea name="attr_alignment_details"></textarea>
-		</div>
-
-	</div>
-
-</div>
-
 <!-- ATTRIBUTES SECTION AT BOTTOM -->
 <div class="attributes-bottom-container">
 	<div class="attributes-header">
@@ -755,7 +644,6 @@
 				<div class="dw-stat-footer">
 					<div class="dw-stat-circle">
 					<button type="roll" name="roll_strength" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Strength}} {{result=[[@{rolltype} + @{str_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
-						<br />
 						<span name="attr_str_mod"></span>
 					</button>
 					</div>
@@ -770,7 +658,6 @@
 				<div class="dw-stat-footer">
 					<div class="dw-stat-circle">
 					<button type="roll" name="roll_dexterity" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Dexterity}} {{result=[[@{rolltype} + @{dex_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
-						<br />
 						<span name="attr_dex_mod"></span>
 					</button>
 					</div>
@@ -785,7 +672,6 @@
 				<div class="dw-stat-footer">
 					<div class="dw-stat-circle">
 					<button type="roll" name="roll_constitution" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Constitution}} {{result=[[@{rolltype} + @{con_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
-						<br />
 						<span name="attr_con_mod"></span>
 					</button>
 					</div>
@@ -800,7 +686,6 @@
 				<div class="dw-stat-footer">
 					<div class="dw-stat-circle">
 					<button type="roll" name="roll_intelligence" value="&{template:dwgeneral} {{charname=@{character_name}}}{{rollname=Intelligence}} {{result=[[@{rolltype} + @{int_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
-						<br />
 						<span name="attr_int_mod"></span>
 					</button>
 					</div>
@@ -815,7 +700,6 @@
 				<div class="dw-stat-footer">
 					<div class="dw-stat-circle">
 					<button type="roll" name="roll_wisdom" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Wisdom}} {{result=[[@{rolltype} + @{wis_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
-						<br />
 						<span name="attr_wis_mod"></span>
 					</button>
 					</div>
@@ -830,7 +714,6 @@
 				<div class="dw-stat-footer">
 					<div class="dw-stat-circle">
 					<button type="roll" name="roll_charisma" value="&{template:dwgeneral} {{charname=@{character_name}}} {{rollname=Charisma}} {{result=[[@{rolltype} + @{cha_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Global Ongoing]]}}">
-						<br />
 						<span name="attr_cha_mod"></span>
 					</button>
 					</div>
@@ -849,7 +732,7 @@
 		<div class="mid-content moves">
 			<fieldset class="repeating_moves">
 				<div class="move-main">
-					<button type="roll" name="roll_move" value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[@{rolltype} + @{movestat} +@{movemod} + (@{rollforward}) Forward + @{global_ongoing} Ongoing Global]]]}} {{details=@{movedetails}}}">
+					<button type="roll" name="roll_move" value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[@{rolltype} + @{movestat} +@{movemod} + (@{rollforward}) Forward + @{global_ongoing} Ongoing Global]]}} {{advantage_label=@{advantage_label}}} {{forward_label=@{forward_label}}} {{details=@{movedetails}}}">
 					<span class="rolltext" name="attr_move_name" value="@{move_name}"></span>
 					</button>
 					<input class="expander expand-move" type="checkbox" name="attr_expand_move" value="1" title="Details" checked="checked"  />
@@ -993,6 +876,39 @@
 					</div>
 				</div>
 			</fieldset>
+		</div>
+	</div>
+
+	<div class="race-container">
+		<div class="mid-header race-header">
+			<span class="label" data-i18n="race-u">RACE</span>
+		</div>
+		<div class="mid-content race">
+			<div class="race-main">
+				<input type="text" name="attr_race" />
+                <textarea name="attr_race_details" style="height:50px;"></textarea>
+			</div>
+		</div>
+	</div>
+
+	<div class="look-container">
+		<div class="mid-header">
+			<button type="roll" name="roll_showlook" value="&{template:dwgeneral} {{charname=@{character_name}}} {{infoname=^{look}}} {{details=@{char_look}}}">
+			<span class="label" data-i18n="look-u">LOOK</span>
+			</button>
+		</div>
+		<div class="mid-content look">
+			<textarea name="attr_char_look"></textarea>
+		</div>
+	</div>
+
+	<div class="alignment-container">
+		<div class="mid-header">
+			<span class="label" data-i18n="alignment-u">ALIGNMENT</span>
+		</div>
+		<div class="mid-content alignment">
+			<input type="text" name="attr_alignment">
+			<textarea name="attr_alignment_details"></textarea>
 		</div>
 	</div>
 
@@ -1181,7 +1097,7 @@
 		{{#result}}
 			<div class="rt-row">
 				<span class="label rt-label" data-i18n="move-roll">Roll:</span>
-				<span class="rt-value rt-text">{{result}}</span>
+				<span class="rt-value rt-text">{{result}}{{#advantage_label}} <span style="color: #999;">{{advantage_label}}</span>{{/advantage_label}}{{#forward_label}} <span style="color: #999;">{{forward_label}}</span>{{/forward_label}}</span>
 			</div>
 			{{#rollLess() result 7}}
 			{{#miss}}
@@ -1285,7 +1201,7 @@
 			{{#result}}
 			<div class="rt-row">
 				<span class="label rt-label" data-i18n="move-roll">Roll:</span>
-				<span class="rt-value rt-text">{{result}}</span>
+				<span class="rt-value rt-text">{{result}}{{#advantage_label}} <span style="color: #999;">{{advantage_label}}</span>{{/advantage_label}}{{#forward_label}} <span style="color: #999;">{{forward_label}}</span>{{/forward_label}}</span>
 			</div>
 			{{/result}}
 			{{/rollGreater() doroll 0}}
@@ -1294,7 +1210,7 @@
 			{{#result}}
 			<div class="rt-row">
 				<span class="label rt-label" data-i18n="move-roll">Roll:</span>
-				<span class="rt-value rt-text">{{result}}</span>
+				<span class="rt-value rt-text">{{result}}{{#advantage_label}} <span style="color: #999;">{{advantage_label}}</span>{{/advantage_label}}{{#forward_label}} <span style="color: #999;">{{forward_label}}</span>{{/forward_label}}</span>
 			</div>
 			{{/result}}
 		{{/doroll}}
@@ -2718,19 +2634,39 @@ on("sheet:opened change:advantage_state", function() {
 	getAttrs(["advantage_state"], function(values) {
 		let rolltype;
 		let state = values.advantage_state || "normal";
+		let advantageLabel = "";
 		console.log(`Advantage state: ${state}`);
 		switch(state) {
 			case "advantage":
 				rolltype = "{2d6, 2d6}kh1";
+				advantageLabel = "Advantage";
 				break;
 			case "disadvantage":
 				rolltype = "{2d6, 2d6}kl1";
+				advantageLabel = "Disadvantage";
 				break;
 			default:
 				rolltype = "2d6";
+				advantageLabel = "";
 		}
 		console.log(`Setting rolltype to: ${rolltype}`);
-		setAttrs({"rolltype": rolltype});
+		setAttrs({"rolltype": rolltype, "advantage_label": advantageLabel});
+	});
+});
+
+// Update forward label based on rollforward state
+on("sheet:opened change:rollforward", function() {
+	getAttrs(["rollforward"], function(values) {
+		let forwardLabel = "";
+		let forward = values.rollforward || "0";
+		console.log(`Forward state: ${forward}`);
+		if(forward === "1" || forward === 1) {
+			forwardLabel = "+1 Forward";
+		} else if(forward === "-1" || forward === -1) {
+			forwardLabel = "-1 Forward";
+		}
+		console.log(`Setting forward label to: ${forwardLabel}`);
+		setAttrs({"forward_label": forwardLabel});
 	});
 });
 

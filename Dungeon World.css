@@ -531,7 +531,6 @@ input[type=number]::-webkit-outer-spin-button {
 .sheet-mid-container {
 	display: flex;
 	flex-wrap: wrap;
-	max-height: 230px;
 	margin-top: 8px;
 }
 
@@ -549,13 +548,13 @@ input[type=number]::-webkit-outer-spin-button {
 }
  
 .sheet-weapons-shields-container {
-	max-width: 552px;
 }
 
 .sheet-mid-header {
 	flex: 0 0 20px;
 	border-radius: 2px;
 	margin: 5px;
+	margin-bottom: 10px;
 	color: white;
 	background-color: rgb(35, 31, 32);
 }
@@ -671,9 +670,10 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .sheet-stats-container {
-	flex: 0 0 auto;
 	display: flex;
-	width: 67%
+	flex: 0 0 auto;
+	justify-content: center;
+	width: 100%;
 }
 
 .sheet-misc-container {
@@ -773,6 +773,10 @@ button span {
 	justify-content: center;
 }
 
+.sheet-dw-stat-circle span {
+	font-size: 16px;
+}
+
 .sheet-dw-statname-short {
 	font-size: small;
 }
@@ -786,6 +790,28 @@ button span {
 
 .sheet-bonds {
 	flex: 0 1 auto;
+}
+
+.sheet-bonds .repcontainer {
+	display: flex;
+    flex-wrap: wrap;
+}
+
+.sheet-bonds .repitem {
+	width: 33%;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 900px) {
+	.sheet-bonds .repitem {
+		width: 50%;
+	}
+}
+
+@media only screen and (max-width: 576px) {
+	.sheet-bonds .repitem {
+		width: 100%;
+	}
 }
 
 .sheet-bonds input[type="text"] {
@@ -971,7 +997,7 @@ button[type=action] {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	width: 67%
+	width: 67%;
 }
 
 .sheet-gear-container {
@@ -1387,8 +1413,8 @@ textarea.sheet-gear-details {
 }
 
 .sheet-attributes-grid {
-	display: grid;
-	grid-template-columns: repeat(6, 1fr);
+	display: flex;
+	justify-content: center;
 	gap: 10px;
 	margin-bottom: 15px;
 }
@@ -1427,7 +1453,7 @@ textarea.sheet-gear-details {
 .sheet-attribute-item .sheet-attr-label {
 	font-weight: bold;
 	font-size: 11px;
-	margin-bottom: 2px;
+	margin-bottom: 4px;
 }
 
 .sheet-attribute-item .sheet-attr-value {
@@ -1527,8 +1553,10 @@ textarea.sheet-gear-details {
 
 .sheet-conditions-grid {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	justify-content: space-between;
 	gap: 20px;
+	flex-wrap: wrap;
 }
 
 .sheet-condition-category {
@@ -1583,6 +1611,7 @@ textarea.sheet-gear-details {
 	padding: 4px;
 	font-size: 11px;
 	min-width: 100px;
+    width: fit-content;
 }
 
 .sheet-damage-state {
