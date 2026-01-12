@@ -1,3 +1,5 @@
+<input type="checkbox" class="morr-active-attr" name="attr_morr_active" value="1" readonly tabindex="-1" />
+
 <div class="container compendium-drop-target">
 
 <input type="hidden" name="attr_sheet_version" value="110">
@@ -93,6 +95,7 @@
 
 
 <input type="checkbox" class="invisible is-npc" tabindex="-1" name="attr_calc_isNPC" value="1" />
+<input type="checkbox" class="invisible morr-active-trigger" tabindex="-1" name="attr_morr_active" value="1" />
 
 <div class="npc-toggler">
 	<input type="checkbox" class="invisible is-npc-label-sib" name="attr_calc_isNPC" value="1" />
@@ -289,12 +292,6 @@
 <div class="conditions-container">
 	<div class="conditions-header">
 		<span class="label">CONDITIONS & DAMAGE TRACKING</span>
-		<div class="death-tracker">
-			<span class="label">BLACK GATE:</span>
-			<div class="death-symbols">
-				<span class="death-count" title="Death Markers">SKULLS: <input type="number" name="attr_death_count" value="0"></span>
-			</div>
-		</div>
 	</div>
 	<div class="conditions-grid">
 		<div class="condition-wrapper">
@@ -518,6 +515,31 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+</div>
+
+<!-- MORR'S BLACK GATE SECTION -->
+<div class="mid-container morr-container">
+	<div class="mid-header morr-header">
+		<span class="label">MORR'S BLACK GATE HAS OPENED</span>
+	</div>
+	<div class="mid-content morr-content">
+		<input type="hidden" name="attr_physical_wound_count" value="0" />
+		<input type="hidden" name="attr_mental_wound_count" value="0" />
+		<input type="hidden" name="attr_morr_type" value="none" />
+		<input type="checkbox" class="morr-physical-check" name="attr_morr_physical_active" value="1" />
+		<input type="checkbox" class="morr-mental-check" name="attr_morr_mental_active" value="1" />
+
+
+		<div class="morr-buttons">
+			<button type="roll" class="morr-physical-button" name="roll_final_threshold" value="&{template:move} {{charname=@{character_name}}} {{movename=The Final Threshold (Physical Death)}} {{trigger=When your body fails and your lifeblood spills, when you're Terminally Physically Wounded and no one can reach you in time, when you have passed the count for Morr - with most or half the points in physical stats, you pass the final threshold.}} {{success=Choose 1: You cling to life, long enough for help to arrive. / You rise in agony, completing one final act before falling unconscious. / A vision or guardian intervenes — death is denied, for now. Mark Exhausted and another Condition.}} {{partial=Choose 1: You survive — but at great cost. A limb is lost, or a disease takes root. / You survive — but are left behind, unconscious and broken. / You rise — but something comes with you from the other side.}} {{miss=The Black Gate opens. The GM will tell you what death looks like — and who or what might claim your soul.}} {{doroll=[[1]]}} {{result=[[@{rolltype} + @{con_mod_current} + (@{rollforward}) Forward + @{global_ongoing} Ongoing Global]]}} {{advantage_label=@{advantage_label}}} {{forward_label=@{forward_label}}}">
+				<span class="morr-button-text">The Final Threshold</span>
+			</button>
+
+			<button type="roll" class="morr-mental-button" name="roll_shattering_mind" value="&{template:move} {{charname=@{character_name}}} {{movename=The Shattering Mind (Mental Collapse)}} {{trigger=When your soul splinters, your mind fractures, or something greater presses against your identity, when you're Terminally Mentally Wounded and no one can reach you in time, when you have passed the count of Morr - with more than half the points in mental stats, your selfhood hangs by a thread.}} {{success=Choose 1: You reassert control, but not without cost. Mark Exhausted or lose a Memory. / You compartmentalize the fracture, but it whispers from within. Gain a scar. / You are possessed or overridden temporarily — but you remember it, and may resist next time.}} {{partial=Choose 1: You shatter — your personality alters (new bond, new drive, new flaw). / You are possessed or corrupted, but a friend may reach you in time. / You awaken later, changed — the GM will tell you how.}} {{miss=The self is lost. The character becomes GM-controlled — or is rewritten with a new will, master, or god.}} {{doroll=[[1]]}} {{result=[[@{rolltype} + ?{Choose Stat|WIS,@{wis_mod_current}|INT,@{int_mod_current}} + (@{rollforward}) Forward + @{global_ongoing} Ongoing Global]]}} {{advantage_label=@{advantage_label}}} {{forward_label=@{forward_label}}}">
+				<span class="morr-button-text">The Shattering Mind</span>
+			</button>
 		</div>
 	</div>
 </div>
@@ -2764,6 +2786,83 @@ on("change:str_wound_minor change:str_wound_moderate change:str_wound_severe cha
 		if (Object.keys(updates).length > 0) {
 			setAttrs(updates);
 		}
+	});
+});
+
+// Calculate Morr's Black Gate wound counts
+on("sheet:opened change:str_wound_minor change:str_wound_moderate change:str_wound_severe change:str_wound_terminal change:dex_wound_minor change:dex_wound_moderate change:dex_wound_severe change:dex_wound_terminal change:con_wound_minor change:con_wound_moderate change:con_wound_severe change:con_wound_terminal change:int_wound_minor change:int_wound_moderate change:int_wound_severe change:int_wound_terminal change:wis_wound_minor change:wis_wound_moderate change:wis_wound_severe change:wis_wound_terminal change:cha_wound_minor change:cha_wound_moderate change:cha_wound_severe change:cha_wound_terminal", function() {
+	var physicalStats = ["str", "dex", "con"];
+	var mentalStats = ["int", "wis", "cha"];
+	var allWoundAttrs = [];
+	
+	for (var i = 0; i < physicalStats.length; i++) {
+		allWoundAttrs.push(physicalStats[i] + "_wound_minor");
+		allWoundAttrs.push(physicalStats[i] + "_wound_moderate");
+		allWoundAttrs.push(physicalStats[i] + "_wound_severe");
+		allWoundAttrs.push(physicalStats[i] + "_wound_terminal");
+	}
+	for (var i = 0; i < mentalStats.length; i++) {
+		allWoundAttrs.push(mentalStats[i] + "_wound_minor");
+		allWoundAttrs.push(mentalStats[i] + "_wound_moderate");
+		allWoundAttrs.push(mentalStats[i] + "_wound_severe");
+		allWoundAttrs.push(mentalStats[i] + "_wound_terminal");
+	}
+	
+	getAttrs(allWoundAttrs, function(values) {
+		var physicalMinor = 0;
+		var physicalModerate = 0;
+		var physicalSevere = 0;
+		var physicalTerminal = 0;
+		var mentalMinor = 0;
+		var mentalModerate = 0;
+		var mentalSevere = 0;
+		var mentalTerminal = 0;
+		
+		// Count physical wounds
+		for (var i = 0; i < physicalStats.length; i++) {
+			if (values[physicalStats[i] + "_wound_minor"] === "fresh") physicalMinor++;
+			if (values[physicalStats[i] + "_wound_moderate"] === "fresh") physicalModerate++;
+			if (values[physicalStats[i] + "_wound_severe"] === "fresh") physicalSevere++;
+			if (values[physicalStats[i] + "_wound_terminal"] === "fresh") physicalTerminal++;
+		}
+		
+		// Count mental wounds
+		for (var i = 0; i < mentalStats.length; i++) {
+			if (values[mentalStats[i] + "_wound_minor"] === "fresh") mentalMinor++;
+			if (values[mentalStats[i] + "_wound_moderate"] === "fresh") mentalModerate++;
+			if (values[mentalStats[i] + "_wound_severe"] === "fresh") mentalSevere++;
+			if (values[mentalStats[i] + "_wound_terminal"] === "fresh") mentalTerminal++;
+		}
+		
+		// Calculate raw counts (each wound = 1)
+		var physicalRawCount = physicalMinor + physicalModerate + physicalSevere + physicalTerminal;
+		var mentalRawCount = mentalMinor + mentalModerate + mentalSevere + mentalTerminal;
+		
+		// Calculate threshold scores: 6 Minor = 1, 4 Moderate = 1, 2 Severe = 1, 1 Terminal = 1
+		var physicalThreshold = Math.floor(physicalMinor / 6) + Math.floor(physicalModerate / 4) + Math.floor(physicalSevere / 2) + physicalTerminal;
+		var mentalThreshold = Math.floor(mentalMinor / 6) + Math.floor(mentalModerate / 4) + Math.floor(mentalSevere / 2) + mentalTerminal;
+		
+		var updates = {
+			"physical_wound_count": physicalRawCount,
+			"mental_wound_count": mentalRawCount,
+			"physical_threshold_met": (physicalThreshold >= 1) ? "1" : "0",
+			"mental_threshold_met": (mentalThreshold >= 1) ? "1" : "0"
+		};
+		
+		// Determine which type of death move applies (half or more in physical = physical death)
+		if (physicalThreshold > 0 || mentalThreshold > 0) {
+			updates["morr_type"] = (physicalThreshold >= mentalThreshold) ? "physical" : "mental";
+			updates["morr_physical_active"] = (physicalThreshold >= mentalThreshold) ? "1" : "0";
+			updates["morr_mental_active"] = (mentalThreshold > physicalThreshold) ? "1" : "0";
+			updates["morr_active"] = "1";
+		} else {
+			updates["morr_type"] = "none";
+			updates["morr_physical_active"] = "0";
+			updates["morr_mental_active"] = "0";
+			updates["morr_active"] = "0";
+		}
+		
+		setAttrs(updates);
 	});
 });
 
